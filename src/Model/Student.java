@@ -10,16 +10,16 @@ package Model;
  */
 public class Student {
     
-    private int idStudent;
+    private String idStudent;
     private String firstNameStudent;
     private String lastNameStudent;   
     private String address;
     private String city;
     private String phoneNumber;
-    private char gender;
+    private String gender;
     private String DOB;
 
-    public Student(int idStudent, String firstNameStudent, String lastNameStudent, String address, String city, String phoneNumber, char gender, String DOB) {
+    public Student(String idStudent, String firstNameStudent, String lastNameStudent, String address, String city, String phoneNumber, String gender, String DOB) {
         this.idStudent = idStudent;
         this.firstNameStudent = firstNameStudent;
         this.lastNameStudent = lastNameStudent;
@@ -30,11 +30,11 @@ public class Student {
         this.DOB = DOB;
     }
 
-    public int getIdStudent() {
+    public String getIdStudent() {
         return idStudent;
     }
 
-    public void setIdStudent(int idStudent) {
+    public void setIdStudent(String idStudent) {
         this.idStudent = idStudent;
     }
 
@@ -78,11 +78,11 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
@@ -96,7 +96,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student{" + "idStudent=" + idStudent + ", firstNameStudent=" + firstNameStudent + ", lastNameStudent=" + lastNameStudent + ", address=" + address + ", city=" + city + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", DOB=" + DOB + '}';
+        return "Student{" + "idStudent=" + idStudent + ", firstNameStudent=" + firstNameStudent + ", lastNameStudent=" + lastNameStudent + ", address=" + address + ", city=" + city + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", DOB=" + DOB + '}'+"\n";
     }
 
   

@@ -1,9 +1,9 @@
-
 /*
      * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
      * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 
+import Control.controllerStudent;
 import Control.cotrollerBook;
 import Model.Book;
 import java.io.IOException;
@@ -29,5 +29,8 @@ public class Library {
         
         //System.out.println(myListBook); 
   
+        controllerStudent myStudentController = new controllerStudent();
+        System.out.println(myStudentController.getStudentObj());
+        
     }
 }
