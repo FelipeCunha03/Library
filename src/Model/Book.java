@@ -11,7 +11,7 @@ package Model;
 public class Book {
     
     // Atribute of Book.
-    private String id;
+    private String idAuthor;
     private String  firstNameAuthor;
     private String  LastNameAuthor;
     private String  bookTitle;
@@ -19,8 +19,8 @@ public class Book {
     
     // Constructor
 
-    public Book(String id, String firstNameAuthor, String LastNameAuthor, String bookTitle, String genero) {
-        this.id = id;
+    public Book(String idAuthor, String firstNameAuthor, String LastNameAuthor, String bookTitle, String genero) {
+        this.idAuthor = idAuthor;
         this.firstNameAuthor = firstNameAuthor;
         this.LastNameAuthor = LastNameAuthor;
         this.bookTitle = bookTitle;
@@ -31,13 +31,13 @@ public class Book {
     // methodos gets and setters 
 
     public String getId() {
-        return id;
+        return idAuthor;
     }
 
 
 
     public void setId(String id) {
-        this.id = id;
+        this.idAuthor = id;
     }
 
     public String getFirstNameAuthor() {
@@ -77,7 +77,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", firstNameAuthor=" + firstNameAuthor + ", LastNameAuthor=" + LastNameAuthor + ", bookTitle=" + bookTitle + ", genero=" + genero + '}' +"\n";
+        return "Book{" + "id=" + idAuthor + ", firstNameAuthor=" + firstNameAuthor + ", LastNameAuthor=" + LastNameAuthor + ", bookTitle=" + bookTitle + ", genero=" + genero + '}' +"\n";
     }
     
     
