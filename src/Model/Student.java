@@ -10,24 +10,24 @@ package Model;
  */
 public class Student {
     
-    private String nameStudent;
     private int idStudent;
+    private String firstNameStudent;
+    private String lastNameStudent;   
     private String address;
-    private String phone;
+    private String city;
+    private String phoneNumber;
+    private char gender;
+    private String DOB;
 
-    public Student(String nameStudent, int idStudent, String address, String phone) {
-        this.nameStudent = nameStudent;
+    public Student(int idStudent, String firstNameStudent, String lastNameStudent, String address, String city, String phoneNumber, char gender, String DOB) {
         this.idStudent = idStudent;
+        this.firstNameStudent = firstNameStudent;
+        this.lastNameStudent = lastNameStudent;
         this.address = address;
-        this.phone = phone;
-    }
-
-    public String getNameStudent() {
-        return nameStudent;
-    }
-
-    public void setNameStudent(String nameStudent) {
-        this.nameStudent = nameStudent;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.DOB = DOB;
     }
 
     public int getIdStudent() {
@@ -38,6 +38,22 @@ public class Student {
         this.idStudent = idStudent;
     }
 
+    public String getFirstNameStudent() {
+        return firstNameStudent;
+    }
+
+    public void setFirstNameStudent(String firstNameStudent) {
+        this.firstNameStudent = firstNameStudent;
+    }
+
+    public String getLastNameStudent() {
+        return lastNameStudent;
+    }
+
+    public void setLastNameStudent(String lastNameStudent) {
+        this.lastNameStudent = lastNameStudent;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -46,19 +62,43 @@ public class Student {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getCity() {
+        return city;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
     }
 
     @Override
     public String toString() {
-        return "Student{" + "nameStudent=" + nameStudent + ", idStudent=" + idStudent + ", address=" + address + ", phone=" + phone + '}';
+        return "Student{" + "idStudent=" + idStudent + ", firstNameStudent=" + firstNameStudent + ", lastNameStudent=" + lastNameStudent + ", address=" + address + ", city=" + city + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", DOB=" + DOB + '}';
     }
-    
-    
+
+  
     
 }
