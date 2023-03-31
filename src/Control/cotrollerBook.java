@@ -34,6 +34,8 @@ public class cotrollerBook {
         String path = "src/library/books.csv"; //path of data It is.
 
         BufferedReader br = new BufferedReader(new FileReader(path));
+        br.readLine();
+        
         String line = br.readLine();
 
         //We had put all processe for get the book from data  for treatement some exeception if will have some erroe ao open the file.  

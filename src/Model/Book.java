@@ -11,36 +11,38 @@ package Model;
 public class Book {
     
     // Atribute of Book.
-    private String idAuthor;
+    private String idBook;
     private String  firstNameAuthor;
     private String  LastNameAuthor;
     private String  bookTitle;
-    private String  genero;
-    //private boolean isBorrowed;
+    private String  genre;
+    private boolean  isAvailable;
+
     
     // Constructor
 
-    public Book(String idAuthor, String firstNameAuthor, String LastNameAuthor, String bookTitle, String genero) {
-        this.idAuthor = idAuthor;
+    public Book(String idBook, String firstNameAuthor, String LastNameAuthor, String bookTitle, String genre) {
+        this.idBook = idBook;
         this.firstNameAuthor = firstNameAuthor;
         this.LastNameAuthor = LastNameAuthor;
         this.bookTitle = bookTitle;
-        this.genero = genero;
-        //this.isBorrowed = isBorrowed;
+        this.genre = genre;
+        this.isAvailable = true;
+ 
     }
     
     
     // methodos gets and setters 
 
-    public String getId() {
-        return idAuthor;
+    public String getIdBook() {
+        return idBook;
     }
 
-
-
-    public void setId(String id) {
-        this.idAuthor = id;
+    public void setIdBook(String idBook) {
+        this.idBook = idBook;
     }
+
+   
 
     public String getFirstNameAuthor() {
         return firstNameAuthor;
@@ -66,13 +68,27 @@ public class Book {
         this.bookTitle = bookTitle;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
+
+   
+
+    public boolean isIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+    
+    
+    
+    
 
    /* public boolean isisBorrowed() {
         return isBorrowed;
@@ -89,8 +105,10 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" + "id=" + idAuthor + ", firstNameAuthor=" + firstNameAuthor + ", LastNameAuthor=" + LastNameAuthor + ", bookTitle=" + bookTitle + ", genero=" + genero + '}' +"\n";
+        return  "IdBook: " + idBook + ", First Name of Author: " + firstNameAuthor + ", LastName of Author: " + LastNameAuthor + ", Title of book: " + bookTitle + ", Genre: " + genre + ", Available: " + isAvailable + "\n";
     }
+
+    
     
     
     

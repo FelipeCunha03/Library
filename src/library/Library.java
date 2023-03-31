@@ -25,10 +25,11 @@ public class Library {
         // TODO code application logic here
         
         cotrollerBook myBookController = new cotrollerBook();
-       // System.out.println(myBookController.getBookObj());
+        System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
+        System.out.println(myBookController.getBookObj());
         
         //System.out.println(myListBook); 
-  
+        System.out.println("-------------------------------------------- Student --------------------------------------------------------\n");
         controllerStudent myStudentController = new controllerStudent();
         System.out.println(myStudentController.getStudentObj());
         
