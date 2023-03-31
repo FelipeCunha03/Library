@@ -16,6 +16,7 @@ public class Book {
     private String  LastNameAuthor;
     private String  bookTitle;
     private String  genero;
+    //private boolean isBorrowed;
     
     // Constructor
 
@@ -25,6 +26,7 @@ public class Book {
         this.LastNameAuthor = LastNameAuthor;
         this.bookTitle = bookTitle;
         this.genero = genero;
+        //this.isBorrowed = isBorrowed;
     }
     
     
@@ -71,6 +73,16 @@ public class Book {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+
+   /* public boolean isisBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setStatus(boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
+    }*/
+    
+ 
     
     
     // methodos toString  for output the book as String.
