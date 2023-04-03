@@ -13,7 +13,7 @@ public class Book {
     // Atribute of Book.
     private String idBook;
     private String  firstNameAuthor;
-    private String  LastNameAuthor;
+    private String  lastNameAuthor;
     private String  bookTitle;
     private String  genre;
     private boolean  isAvailable;
@@ -21,10 +21,10 @@ public class Book {
     
     // Constructor
 
-    public Book(String idBook, String firstNameAuthor, String LastNameAuthor, String bookTitle, String genre) {
+    public Book(String idBook, String firstNameAuthor, String lastNameAuthor, String bookTitle, String genre) {
         this.idBook = idBook;
         this.firstNameAuthor = firstNameAuthor;
-        this.LastNameAuthor = LastNameAuthor;
+        this.lastNameAuthor = lastNameAuthor;
         this.bookTitle = bookTitle;
         this.genre = genre;
         this.isAvailable = true;
@@ -52,12 +52,12 @@ public class Book {
         this.firstNameAuthor = firstNameAuthor;
     }
 
-    public String getLastNameAuthor() {
-        return LastNameAuthor;
+    public String getlastNameAuthor() {
+        return lastNameAuthor;
     }
 
-    public void setLastNameAuthor(String LastNameAuthor) {
-        this.LastNameAuthor = LastNameAuthor;
+    public void setlastNameAuthor(String LastNameAuthor) {
+        this.lastNameAuthor = LastNameAuthor;
     }
 
     public String getBookTitle() {
@@ -85,27 +85,13 @@ public class Book {
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-    
-    
-    
-    
-
-   /* public boolean isisBorrowed() {
-        return isBorrowed;
-    }
-
-    public void setStatus(boolean isBorrowed) {
-        this.isBorrowed = isBorrowed;
-    }*/
-    
- 
-    
+   
     
     // methodos toString  for output the book as String.
 
     @Override
     public String toString() {
-        return  "IdBook: " + idBook + ", First Name of Author: " + firstNameAuthor + ", LastName of Author: " + LastNameAuthor + ", Title of book: " + bookTitle + ", Genre: " + genre + ", Available: " + isAvailable + "\n";
+        return  "IdBook: " + idBook + ", First Name of Author: " + firstNameAuthor + ", LastName of Author: " + lastNameAuthor + ", Title of book: " + bookTitle + ", Genre: " + genre + ", Available: " + isAvailable + "\n";
     }
 
     

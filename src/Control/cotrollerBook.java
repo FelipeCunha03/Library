@@ -10,16 +10,20 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
+import javax.xml.transform.Source;
 
 /**
  *
  * @author felipecunha
  */
 public class cotrollerBook {
-
+    
+    
     /**
      * The methods that will get the file of book put in list of set.
      *
@@ -32,6 +36,7 @@ public class cotrollerBook {
         //We had decide to use  Set TreeSet because will but in orderalphabetic and Set for avoid duplicate values , makes sense for library system.
         Set<Book> myBookSet = new HashSet<>();
         String path = "src/library/books.csv"; //path of data It is.
+        
 
         BufferedReader br = new BufferedReader(new FileReader(path));
         br.readLine();
@@ -46,13 +51,13 @@ public class cotrollerBook {
 
                 // Created Array of String   for get  each information from file CSV.
                 String[] vetBook = line.split(",");
-                String idA = vetBook[0];
+                String idB = vetBook[0];
                 String firstNameA = vetBook[1];
                 String lastNameA = vetBook[2];
                 String title = vetBook[3];
                 String genre = vetBook[4];
 
-                Book bookObj = new Book(idA, firstNameA, lastNameA, title, genre);
+                Book bookObj = new Book(idB, firstNameA, lastNameA, title, genre);
 
                 myBookSet.add(bookObj);
 
@@ -70,4 +75,28 @@ public class cotrollerBook {
         return listBook;
     }
 
+    public String searchBookTitle(String title){       
+        
+        //List<Book> matchBook = new ArrayList<>();
+        //for (Book book : ){
+        //    }
+        return title;
+        
+    }
+    
+    public void searchBookAuthor(){
+        
+     
+    }
+    public static void listBookTitle(){
+        System.out.println("List book title"); //ordenar a lista pelo nome do livro em ordem alfabetica
+        
+        
+    }
+    public static void listBookAuthor(){
+        System.out.println("List book author"); //ordenar a lista pelo nome do autor em ordem alfabetica
+
+    }
+    
+    
 }

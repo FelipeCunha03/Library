@@ -10,4 +10,18 @@ package Control;
  */
 public class controllerBorrowing {
     
+    
+    public static void borrowBook(){
+        System.out.println("Borrow book method"); 
+
+    }
+    public static void returnBook(){
+        System.out.println("Return book method"); 
+
+    }
+    public static void listBookBorrowed(){
+        System.out.println("List book borrowed method"); 
+
+    }
 }
+

@@ -63,5 +63,24 @@ public class controllerStudent {
 
         return listStudent;
     }
+    
+    public static void searchStudentName(){       
+        System.out.println("Class search Student name");       
+    }
+    
+    public static void searchStudentID(){
+        System.out.println("Class search student ID");
+     
+    }
+    public static void listStudentName(){
+        System.out.println("List student name");
+
+    }
+    public static void listStudentID(){
+        System.out.println("List student ID");
+
+    }
+    
+    
 
 }
