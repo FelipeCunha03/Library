@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Control;
+package Controller;
 
 import Model.Book;
 import Model.Student;
@@ -63,24 +63,24 @@ public class controllerStudent {
 
         return listStudent;
     }
-    
-    public static void searchStudentName(){       
-        System.out.println("Class search Student name");       
+
+    public static void searchStudentName() {
+        System.out.println("Class search Student name");
     }
-    
-    public static void searchStudentID(){
+
+    public static void searchStudentID() {
         System.out.println("Class search student ID");
-     
+
     }
-    public static void listStudentName(){
+
+    public static void listStudentName() {
         System.out.println("List student name");
 
     }
-    public static void listStudentID(){
+
+    public static void listStudentID() {
         System.out.println("List student ID");
 
     }
-    
-    
 
 }

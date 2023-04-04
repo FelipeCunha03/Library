@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Control;
+package Controller;
 
 import Model.Book;
 import java.io.BufferedReader;
@@ -21,9 +21,10 @@ import javax.xml.transform.Source;
  *
  * @author felipecunha
  */
-public class cotrollerBook {
+public class controllerBook {
     
-    
+     List<Book> listBook = new ArrayList<>();
+
     /**
      * The methods that will get the file of book put in list of set.
      *
@@ -36,11 +37,10 @@ public class cotrollerBook {
         //We had decide to use  Set TreeSet because will but in orderalphabetic and Set for avoid duplicate values , makes sense for library system.
         Set<Book> myBookSet = new HashSet<>();
         String path = "src/library/books.csv"; //path of data It is.
-        
 
         BufferedReader br = new BufferedReader(new FileReader(path));
         br.readLine();
-        
+
         String line = br.readLine();
 
         //We had put all processe for get the book from data  for treatement some exeception if will have some erroe ao open the file.  
@@ -70,33 +70,23 @@ public class cotrollerBook {
             System.out.println("Error open file" + e.getMessage());
         }
 
-        List<Book> listBook = new ArrayList<>(myBookSet);// to convert setList of book  to arrayList, I think It is easier  use List.
+        listBook = new ArrayList<>(myBookSet);// to convert setList of book  to arrayList, I think It is easier  use List.
 
         return listBook;
-    }
-
-    public String searchBookTitle(String title){       
-        
-        //List<Book> matchBook = new ArrayList<>();
-        //for (Book book : ){
-        //    }
-        return title;
-        
-    }
-    
-    public void searchBookAuthor(){
-        
-     
-    }
-    public static void listBookTitle(){
-        System.out.println("List book title"); //ordenar a lista pelo nome do livro em ordem alfabetica
-        
-        
-    }
-    public static void listBookAuthor(){
-        System.out.println("List book author"); //ordenar a lista pelo nome do autor em ordem alfabetica
 
     }
-    
-    
+
+    public Book searchBookByTitle( String title) {
+
+        for (int i = 0; i < listBook.size(); i++) {
+
+            if (listBook.get(i).getBookTitle().equals(title)) {
+
+                return listBook.get(i);
+            }
+
+        }
+         return null;
+    }
+
 }
