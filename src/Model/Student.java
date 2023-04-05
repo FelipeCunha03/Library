@@ -98,7 +98,15 @@ public class Student {
 
     @Override
     public String toString() {
-        return "IdStudent: " + idStudent + ", FirstName: " + firstNameStudent + ", LastName: " + lastNameStudent + ", Address: " + address + ", City: " + city + ", PhoneNumber: " + phoneNumber + ", Gender: " + gender + ", Date of birth: " + DOB +"\n";
+        return "\n-------Student Data-------\nId Student: " + idStudent + 
+                "\nStudent's first name:" + firstNameStudent + 
+                "\nStudent's first name: " + lastNameStudent + 
+                "\nAddress: " + address + 
+                "\nCity: " + city + 
+                "\nPhone Number: " + phoneNumber + 
+                "\nGender: " + gender + 
+                "\nDate of Birth: " + DOB +"\n "
+                + "-------------------------";
     }
 
     

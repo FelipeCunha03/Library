@@ -91,7 +91,13 @@ public class Book {
 
     @Override
     public String toString() {
-        return  "IdBook: " + idBook + ", First Name of Author: " + firstNameAuthor + ", LastName of Author: " + lastNameAuthor + ", Title of book: " + bookTitle + ", Genre: " + genre + ", Available: " + isAvailable + "\n";
+        return  "\n-------Book data-------\nId Book: " + idBook + 
+                "\nAuthor's first name: " + firstNameAuthor + 
+                "\nAuthor's last name: " + lastNameAuthor + 
+                "\nBook's title: " + bookTitle + 
+                "\nGenre: " + genre + 
+                "\nAvailable: " + isAvailable + "\n"
+                + "-------------------------";
     }
 
     

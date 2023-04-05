@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 /**
@@ -20,6 +21,9 @@ import java.util.Set;
  * @author rapha
  */
 public class controllerStudent {
+    
+    Scanner s = new Scanner(System.in);
+    List<Student> listStudent;
 
     public List<Student> getStudentObj() throws FileNotFoundException, IOException {
 
@@ -64,14 +68,42 @@ public class controllerStudent {
         return listStudent;
     }
 
-    public static void searchStudentName() {
-        System.out.println("Class search Student name");
+    public Student searchStudentByName(List<Student> listStudent) {
+        System.out.println("Inform the student's name: ");
+        String studentName = s.nextLine();
+        
+        String fNameStudent = studentName.substring(0, studentName.indexOf(" "));
+        String lNameStudent = studentName.substring(studentName.indexOf(" ")+1);       
+             
+        for (int i = 0; i < listStudent.size(); i++) {
+
+            if ((listStudent.get(i).getFirstNameStudent().equals(fNameStudent))&& 
+                    (listStudent.get(i).getLastNameStudent().equals(lNameStudent))){
+                
+                    return listStudent.get(i);
+                    
+                    
+            }
+        }
+        return null;
     }
 
-    public static void searchStudentID() {
-        System.out.println("Class search student ID");
+    public Student searchStudentByID(List<Student> listStudent) {
+        System.out.println("Informe the student's ID: ");
+        int studentID = s.nextInt();
+        
+        for (int i = 0; i < listStudent.size(); i++) {
 
+            if (listStudent.get(i).getIdStudent() == studentID){
+                
+                return listStudent.get(i);
+                
+            }
+        }
+        return null;
     }
+
+    
 
     public static void listStudentName() {
         System.out.println("List student name");
@@ -82,5 +114,7 @@ public class controllerStudent {
         System.out.println("List student ID");
 
     }
+
+    
 
 }

@@ -8,6 +8,7 @@ import Controller.controllerBorrowing;
 import Controller.controllerStudent;
 import Controller.controllerBook;
 import Model.Book;
+import Model.Student;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,11 @@ public class Menu {
         controllerBorrowing myBw = new controllerBorrowing();
         List<Book> listBook = new ArrayList<>();
         listBook = myCB.getBookObj();
-        String bookAuthor;
+        List<Student> listStudent = new ArrayList<>();
+        listStudent = myCS.getStudentObj();
+        //List<Student> listStudent1 = new ArrayList<>();
+        //listStudent1 = myCS.getStudentObj();
+        //String bookAuthor;
 
         do {
 
@@ -62,7 +67,14 @@ public class Menu {
                 switch (option) {
 
                     case 1:
-                        System.out.println(myCB.searchBookByTitle(listBook));
+                        Book myBook;
+                        myBook = myCB.searchBookByTitle(listBook);
+                        if (myBook == null) {
+                            System.out.println("Book not found!");
+
+                        } else {
+                            System.out.println(myBook);
+                        }
                         break;
                     
                     case (2):
@@ -78,12 +90,27 @@ public class Menu {
                         break;
                         
                     case (5):
-                        myCS.searchStudentName();
+                        Student myStudentName;
+                        myStudentName = myCS.searchStudentByName(listStudent);
+                        if (myStudentName == null) {
+                            System.out.println("Student not found!");
+
+                        } else {
+                            System.out.println(myStudentName);
+                        }
                         break;
                         
                     case (6):
-                        myCS.searchStudentID();
+                        Student myStudentID;
+                        myStudentID = myCS.searchStudentByID(listStudent);
+                        if (myStudentID == null) {
+                            System.out.println("ID not found!");
+
+                        } else {
+                            System.out.println(myStudentID);
+                        }
                         break;
+                       
                         
                     case (7):
                         myCS.listStudentName();
