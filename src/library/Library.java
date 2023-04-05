@@ -24,22 +24,18 @@ public class Library {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        
 
-        
        Scanner s = new  Scanner(System.in);
        controllerBook myCB = new controllerBook();
+       
         
        controllerBook myBookController = new controllerBook();
        System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
+       //listBook = myBookController.getBookObj();
        System.out.println(myBookController.getBookObj());
-       
+                          
                         
-                        String bookTitle;
-                        System.out.println("Inform the book's title: ");
-                        bookTitle = s.nextLine().trim();
-                        
-                        System.out.println(myCB.searchBookByTitle(bookTitle)); 
+   
                        
         
        // System.out.println("-------------------------------------------- Student --------------------------------------------------------\n");

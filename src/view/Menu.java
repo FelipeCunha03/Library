@@ -20,19 +20,18 @@ public class Menu {
 
     public static void main(String[] args) {
 
-        boolean valid;
         int option = 0;
 
         Scanner myScanner = new Scanner(System.in);
         controllerBook myCB = new controllerBook();
         controllerStudent myCS = new controllerStudent();
         controllerBorrowing myBw = new controllerBorrowing();
+        List<Book> listBook = new ArrayList<>();
         String bookAuthor;
 
         do {
 
             try {
-
                 System.out.println("**********************************************************");
                 System.out.println("**                 Welcome to CCT Library!!             **");
                 System.out.println("**********************************************************");
@@ -53,23 +52,23 @@ public class Menu {
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
+                
+          
+
                 option = myScanner.nextInt();
 
                 switch (option) {
+
                     case 1:
 
-                       
-                        String bookTitle;
-                        System.out.println("Inform the book title: ");
-                        bookTitle = myScanner.nextLine().trim();
-
-                        myCB.searchBookByTitle(bookTitle);
-
+                        listBook = myCB.getBookObj();
+                        System.out.println(myCB.searchBookByTitle(listBook));
                         break;
 
                     case 12:
                         System.out.println("The programar is over!");
                         break;
+
                     default:
                         System.out.println("Wrong option");
 

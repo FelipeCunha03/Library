@@ -23,7 +23,8 @@ import javax.xml.transform.Source;
  */
 public class controllerBook {
     
-     List<Book> listBook = new ArrayList<>();
+     List<Book> listBook;
+     Scanner s = new Scanner(System.in);
 
     /**
      * The methods that will get the file of book put in list of set.
@@ -34,7 +35,7 @@ public class controllerBook {
      */
     public List<Book> getBookObj() throws FileNotFoundException, IOException {
 
-        //We had decide to use  Set TreeSet because will but in orderalphabetic and Set for avoid duplicate values , makes sense for library system.
+        //We had decide to use Set TreeSet because will but in orderalphabetic and Set for avoid duplicate values , makes sense for library system.
         Set<Book> myBookSet = new HashSet<>();
         String path = "src/library/books.csv"; //path of data It is.
 
@@ -70,22 +71,26 @@ public class controllerBook {
             System.out.println("Error open file" + e.getMessage());
         }
 
-        listBook = new ArrayList<>(myBookSet);// to convert setList of book  to arrayList, I think It is easier  use List.
+        listBook = new ArrayList<>(myBookSet);// to convert setList of book to arrayList,I think It's easier to use List for maniputation.
 
         return listBook;
 
     }
 
-    public Book searchBookByTitle( String title) {
-
+    public Book searchBookByTitle(List<Book> listBook){
+        
+        System.out.println("Inform the book's title: ");
+        String bookTitle = s.nextLine();
+        
         for (int i = 0; i < listBook.size(); i++) {
 
-            if (listBook.get(i).getBookTitle().equals(title)) {
+            if (listBook.get(i).getBookTitle().equals(bookTitle)) {
 
                 return listBook.get(i);
             }
 
         }
+         
          return null;
     }
 
