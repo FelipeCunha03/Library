@@ -64,18 +64,58 @@ public class Menu {
                         listBook = myCB.getBookObj();
                         System.out.println(myCB.searchBookByTitle(listBook));
                         break;
+                    
+                    case (2):
+                        //myCB.searchBookByAuthor();
+                        break;
 
+                    case (3):               
+                        //myCB.listBookTitle();
+                        break;
+                            
+                    case (4):               
+                        //myCB.listBookAuthor();
+                        break;
+                        
+                    case (5):
+                        myCS.searchStudentName();
+                        break;
+                        
+                    case (6):
+                        myCS.searchStudentID();
+                        break;
+                        
+                    case (7):
+                        myCS.listStudentName();
+                        break;
+                        
+                    case (8):
+                        myCS.listStudentID();
+                        break;
+                        
+                    case (9):
+                        myBw.borrowBook();
+                        break;
+                        
+                    case (10):
+                        myBw.returnBook();
+                        break;
+                        
+                    case (11):
+                        myBw.listBookBorrowed();
+                        break;
+                    
                     case 12:
                         System.out.println("The programar is over!");
                         break;
 
                     default:
-                        System.out.println("Wrong option");
+                        System.out.println("Please, choose an option between 1 and 12");
 
                 }
 
             } catch (Exception e) {
-                System.out.println("ERROR! You have to type just numbers and one of option on menu!");
+                System.out.println("Something wrong has happened!");
                 myScanner.nextLine();
 
             }
