@@ -52,11 +52,11 @@ public class Book {
         this.firstNameAuthor = firstNameAuthor;
     }
 
-    public String getlastNameAuthor() {
+    public String getLastNameAuthor() {
         return lastNameAuthor;
     }
 
-    public void setlastNameAuthor(String LastNameAuthor) {
+    public void setLastNameAuthor(String LastNameAuthor) {
         this.lastNameAuthor = LastNameAuthor;
     }
 

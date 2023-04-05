@@ -59,8 +59,6 @@ public class Menu {
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
-                
-          
 
                 option = myScanner.nextInt();
 
@@ -76,62 +74,72 @@ public class Menu {
                             System.out.println(myBook);
                         }
                         break;
-                    
+
                     case (2):
-                        //myCB.searchBookByAuthor();
+
+                        myBook = myCB.searchBookByAuthor(listBook);
+
+                        if (myBook == null) {
+                            System.out.println("Book not found!");
+
+                        } else {
+                            System.out.println(myBook);
+                        }
                         break;
 
-                    case (3):               
+                    case (3):
                         //myCB.listBookTitle();
                         break;
-                            
-                    case (4):               
+
+                    case (4):
                         //myCB.listBookAuthor();
                         break;
-                        
+
                     case (5):
-                        Student myStudentName;
-                        myStudentName = myCS.searchStudentByName(listStudent);
-                        if (myStudentName == null) {
+
+                        Student myStudent;
+                        myStudent = myCS.searchStudentByName(listStudent);
+
+                        if (myStudent == null) {
                             System.out.println("Student not found!");
 
                         } else {
-                            System.out.println(myStudentName);
+                            System.out.println(myStudent);
                         }
                         break;
-                        
+
                     case (6):
-                        Student myStudentID;
-                        myStudentID = myCS.searchStudentByID(listStudent);
-                        if (myStudentID == null) {
+
+                        myStudent = myCS.searchStudentByID(listStudent);
+
+                        if (myStudent == null) {
                             System.out.println("ID not found!");
 
                         } else {
-                            System.out.println(myStudentID);
+                            System.out.println(myStudent);
                         }
                         break;
-                       
-                        
+
                     case (7):
                         myCS.listStudentName();
                         break;
-                        
+
                     case (8):
                         myCS.listStudentID();
                         break;
-                        
+
                     case (9):
                         myBw.borrowBook();
                         break;
-                        
+
                     case (10):
                         myBw.returnBook();
                         break;
-                        
+
                     case (11):
                         myBw.listBookBorrowed();
                         break;
-                    
+
                     case 12:
                         System.out.println("The programar is over!");
                         break;

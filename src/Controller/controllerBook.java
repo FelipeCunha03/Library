@@ -76,7 +76,9 @@ public class controllerBook {
         return listBook;
 
     }
-
+    
+    
+     
     public Book searchBookByTitle(List<Book> listBook){
         
         System.out.println("Inform the book's title: ");
@@ -91,6 +93,25 @@ public class controllerBook {
             
 
         }
+        return null;
+    }
+    public Book searchBookByAuthor( List<Book> listBook){
+        
+        System.out.println("Inform the name book's author : ");
+        String nameAuthor = s.nextLine().trim();
+        
+        String fNameAuthor = nameAuthor.substring(0, nameAuthor.indexOf(" "));
+        String lNameAuthor = nameAuthor.substring(nameAuthor.indexOf(" ")+1); 
+        
+        for (int i = 0; i < listBook.size(); i++) {
+
+            if (listBook.get(i).getFirstNameAuthor().equals(fNameAuthor) &&
+                    listBook.get(i).getLastNameAuthor().endsWith(lNameAuthor)) {
+
+                return listBook.get(i);
+            }
+        }
+        
         return null;
     }
 
