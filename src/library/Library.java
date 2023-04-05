@@ -33,10 +33,7 @@ public class Library {
        System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
        //listBook = myBookController.getBookObj();
        System.out.println(myBookController.getBookObj());
-                          
-                        
-   
-                       
+            
         
        // System.out.println("-------------------------------------------- Student --------------------------------------------------------\n");
         //controllerStudent myStudentController = new controllerStudent();

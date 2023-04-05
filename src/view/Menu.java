@@ -8,6 +8,7 @@ import Controller.controllerBorrowing;
 import Controller.controllerStudent;
 import Controller.controllerBook;
 import Model.Book;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +19,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         int option = 0;
 
@@ -27,6 +28,7 @@ public class Menu {
         controllerStudent myCS = new controllerStudent();
         controllerBorrowing myBw = new controllerBorrowing();
         List<Book> listBook = new ArrayList<>();
+        listBook = myCB.getBookObj();
         String bookAuthor;
 
         do {
@@ -60,8 +62,6 @@ public class Menu {
                 switch (option) {
 
                     case 1:
-
-                        listBook = myCB.getBookObj();
                         System.out.println(myCB.searchBookByTitle(listBook));
                         break;
                     
