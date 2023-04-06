@@ -52,13 +52,13 @@ public class controllerBook {
 
                 // Created Array of String   for get  each information from file CSV.
                 String[] vetBook = line.split(",");
-                String idB = vetBook[0];
+                String idBook = vetBook[0];
                 String firstNameA = vetBook[1];
                 String lastNameA = vetBook[2];
                 String title = vetBook[3];
                 String genre = vetBook[4];
 
-                Book bookObj = new Book(idB, firstNameA, lastNameA, title, genre);
+                Book bookObj = new Book(idBook,firstNameA,lastNameA,title,genre);
 
                 myBookSet.add(bookObj);
 
@@ -79,10 +79,10 @@ public class controllerBook {
     
     
      
-    public Book searchBookByTitle(List<Book> listBook){
+    public Book searchBookByTitle(){
         
         System.out.println("Inform the book's title: ");
-        String bookTitle = s.nextLine();
+        String bookTitle = s.nextLine().trim();
         
         for (int i = 0; i < listBook.size(); i++) {
 
@@ -95,7 +95,7 @@ public class controllerBook {
         }
         return null;
     }
-    public Book searchBookByAuthor( List<Book> listBook){
+    public Book searchBookByAuthor(){
         
         System.out.println("Inform the name book's author : ");
         String nameAuthor = s.nextLine().trim();
@@ -105,8 +105,8 @@ public class controllerBook {
         
         for (int i = 0; i < listBook.size(); i++) {
 
-            if (listBook.get(i).getFirstNameAuthor().equals(fNameAuthor) &&
-                    listBook.get(i).getLastNameAuthor().endsWith(lNameAuthor)) {
+            if (listBook.get(i).getfNameAuthor().equals(fNameAuthor) &&
+                    listBook.get(i).getlNameAuthor().endsWith(lNameAuthor)) {
 
                 return listBook.get(i);
             }

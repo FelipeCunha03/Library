@@ -11,53 +11,47 @@ package Model;
 public class Book {
     
     // Atribute of Book.
-    private String idBook;
-    private String  firstNameAuthor;
-    private String  lastNameAuthor;
+    private String  idBook;
+    private String  fNameAuthor;
+    private String  lNameAuthor;
     private String  bookTitle;
     private String  genre;
-    private boolean  isAvailable;
+    private boolean isAvailable;
 
     
     // Constructor
 
-    public Book(String idBook, String firstNameAuthor, String lastNameAuthor, String bookTitle, String genre) {
+    public Book(String idBook, String fNameAuthor, String lNameAuthor, String bookTitle, String genre) {
         this.idBook = idBook;
-        this.firstNameAuthor = firstNameAuthor;
-        this.lastNameAuthor = lastNameAuthor;
+        this.fNameAuthor = fNameAuthor;
+        this.lNameAuthor = lNameAuthor;
         this.bookTitle = bookTitle;
         this.genre = genre;
         this.isAvailable = true;
- 
     }
-    
-    
-    // methodos gets and setters 
 
     public String getIdBook() {
-        return idBook;
+        return  idBook;
     }
 
     public void setIdBook(String idBook) {
         this.idBook = idBook;
     }
 
-   
-
-    public String getFirstNameAuthor() {
-        return firstNameAuthor;
+    public String getfNameAuthor() {
+        return fNameAuthor;
     }
 
-    public void setFirstNameAuthor(String firstNameAuthor) {
-        this.firstNameAuthor = firstNameAuthor;
+    public void setfNameAuthor(String fNameAuthor) {
+        this.fNameAuthor = fNameAuthor;
     }
 
-    public String getLastNameAuthor() {
-        return lastNameAuthor;
+    public String getlNameAuthor() {
+        return lNameAuthor;
     }
 
-    public void setLastNameAuthor(String LastNameAuthor) {
-        this.lastNameAuthor = LastNameAuthor;
+    public void setlNameAuthor(String lNameAuthor) {
+        this.lNameAuthor = lNameAuthor;
     }
 
     public String getBookTitle() {
@@ -76,25 +70,22 @@ public class Book {
         this.genre = genre;
     }
 
-   
-
     public boolean isIsAvailable() {
         return isAvailable;
     }
 
+    // methodos gets and setters
     public void setIsAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
-   
-    
-    // methodos toString  for output the book as String.
 
+    // methodos toString  for output the book as String.
     @Override
     public String toString() {
-        return  "\n-------Book data-------\nId Book: " + idBook + 
-                "\nAuthor's first name: " + firstNameAuthor + 
-                "\nAuthor's last name: " + lastNameAuthor + 
-                "\nBook's title: " + bookTitle + 
+        return  "\n-------Book data-------\nId Book: " + idBook +
+                "\nAuthor's first name: " + fNameAuthor +
+                "\nAuthor's last name: " + lNameAuthor +
+                "\nBook's title: " + bookTitle +
                 "\nGenre: " + genre + 
                 "\nAvailable: " + isAvailable + "\n"
                 + "-------------------------";

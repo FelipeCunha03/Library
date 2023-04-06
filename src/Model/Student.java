@@ -11,24 +11,26 @@ package Model;
 public class Student {
     
     private int idStudent;
-    private String firstNameStudent;
-    private String lastNameStudent;   
+    private String fNameStudent;
+    private String lNameStudent;   
     private String address;
     private String city;
     private String phoneNumber;
     private char gender;
     private String DOB;
 
-    public Student(int idStudent, String firstNameStudent, String lastNameStudent, String address, String city, String phoneNumber, char gender, String DOB) {
+    public Student(int idStudent, String fNameStudent, String lNameStudent, String address, String city, String phoneNumber, char gender, String DOB) {
         this.idStudent = idStudent;
-        this.firstNameStudent = firstNameStudent;
-        this.lastNameStudent = lastNameStudent;
+        this.fNameStudent = fNameStudent;
+        this.lNameStudent = lNameStudent;
         this.address = address;
         this.city = city;
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.DOB = DOB;
     }
+    
+    // gets and setters
 
     public int getIdStudent() {
         return idStudent;
@@ -38,22 +40,20 @@ public class Student {
         this.idStudent = idStudent;
     }
 
-   
-
-    public String getFirstNameStudent() {
-        return firstNameStudent;
+    public String getfNameStudent() {
+        return fNameStudent;
     }
 
-    public void setFirstNameStudent(String firstNameStudent) {
-        this.firstNameStudent = firstNameStudent;
+    public void setfNameStudent(String fNameStudent) {
+        this.fNameStudent = fNameStudent;
     }
 
-    public String getLastNameStudent() {
-        return lastNameStudent;
+    public String getlNameStudent() {
+        return lNameStudent;
     }
 
-    public void setLastNameStudent(String lastNameStudent) {
-        this.lastNameStudent = lastNameStudent;
+    public void setlNameStudent(String lNameStudent) {
+        this.lNameStudent = lNameStudent;
     }
 
     public String getAddress() {
@@ -95,12 +95,18 @@ public class Student {
     public void setDOB(String DOB) {
         this.DOB = DOB;
     }
+    
+    
+
+   
+
+    
 
     @Override
     public String toString() {
         return "\n-------Student Data-------\nId Student: " + idStudent + 
-                "\nStudent's first name:" + firstNameStudent + 
-                "\nStudent's first name: " + lastNameStudent + 
+                "\nStudent's first name:" + fNameStudent + 
+                "\nStudent's first name: " + lNameStudent + 
                 "\nAddress: " + address + 
                 "\nCity: " + city + 
                 "\nPhone Number: " + phoneNumber + 

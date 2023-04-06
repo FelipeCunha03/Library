@@ -24,17 +24,16 @@ public class Menu {
 
         int option = 0;
 
-        Scanner myScanner = new Scanner(System.in);
+        Scanner s = new Scanner(System.in);
         controllerBook myCB = new controllerBook();
         controllerStudent myCS = new controllerStudent();
         controllerBorrowing myBw = new controllerBorrowing();
-        List<Book> listBook = new ArrayList<>();
-        listBook = myCB.getBookObj();
-        List<Student> listStudent = new ArrayList<>();
-        listStudent = myCS.getStudentObj();
-        //List<Student> listStudent1 = new ArrayList<>();
-        //listStudent1 = myCS.getStudentObj();
-        //String bookAuthor;
+
+    
+        // calling the methot that will get the file data of books/students!
+          myCB.getBookObj();
+          myCS.getStudentObj();
+          
 
         do {
 
@@ -60,13 +59,14 @@ public class Menu {
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
 
-                option = myScanner.nextInt();
+                option = s.nextInt();
 
                 switch (option) {
 
                     case 1:
+                        
                         Book myBook;
-                        myBook = myCB.searchBookByTitle(listBook);
+                        myBook = myCB.searchBookByTitle();
                         if (myBook == null) {
                             System.out.println("Book not found!");
 
@@ -77,7 +77,7 @@ public class Menu {
 
                     case (2):
 
-                        myBook = myCB.searchBookByAuthor(listBook);
+                        myBook = myCB.searchBookByAuthor();
 
                         if (myBook == null) {
                             System.out.println("Book not found!");
@@ -98,7 +98,7 @@ public class Menu {
                     case (5):
 
                         Student myStudent;
-                        myStudent = myCS.searchStudentByName(listStudent);
+                        myStudent = myCS.searchStudentByName();
 
                         if (myStudent == null) {
                             System.out.println("Student not found!");
@@ -110,7 +110,7 @@ public class Menu {
 
                     case (6):
 
-                        myStudent = myCS.searchStudentByID(listStudent);
+                        myStudent = myCS.searchStudentByID();
 
                         if (myStudent == null) {
                             System.out.println("ID not found!");
@@ -140,7 +140,7 @@ public class Menu {
                         myBw.listBookBorrowed();
                         break;
 
-                    case 12:
+                    case (12):
                         System.out.println("The programar is over!");
                         break;
 
@@ -150,8 +150,8 @@ public class Menu {
                 }
 
             } catch (Exception e) {
-                System.out.println("Something wrong has happened!");
-                myScanner.nextLine();
+                System.out.println("ERROR! JUST NUMBERS");
+                s.nextLine();
 
             }
 

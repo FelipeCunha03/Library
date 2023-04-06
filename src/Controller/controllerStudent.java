@@ -21,7 +21,7 @@ import java.util.Set;
  * @author rapha
  */
 public class controllerStudent {
-    
+
     Scanner s = new Scanner(System.in);
     List<Student> listStudent;
 
@@ -63,47 +63,63 @@ public class controllerStudent {
             System.out.println("Error open file" + e.getMessage());
         }
 
-        List<Student> listStudent = new ArrayList<>(myStudentSet);
+        listStudent = new ArrayList<>(myStudentSet);
 
         return listStudent;
     }
 
-    public Student searchStudentByName(List<Student> listStudent) {
+    public Student searchStudentByName() {
+
         System.out.println("Inform the student's name: ");
         String studentName = s.nextLine();
-        
+
         String fNameStudent = studentName.substring(0, studentName.indexOf(" "));
-        String lNameStudent = studentName.substring(studentName.indexOf(" ")+1);       
-             
+        String lNameStudent = studentName.substring(studentName.indexOf(" ") + 1);
+
         for (int i = 0; i < listStudent.size(); i++) {
 
-            if ((listStudent.get(i).getFirstNameStudent().equals(fNameStudent))&& 
-                    (listStudent.get(i).getLastNameStudent().equals(lNameStudent))){
-                
-                    return listStudent.get(i);
-                    
-                    
-            }
-        }
-        return null;
-    }
+            if ((listStudent.get(i).getfNameStudent().equals(fNameStudent))
+                    && (listStudent.get(i).getlNameStudent().equals(lNameStudent))) {
 
-    public Student searchStudentByID(List<Student> listStudent) {
-        System.out.println("Informe the student's ID: ");
-        int studentID = s.nextInt();
-        
-        for (int i = 0; i < listStudent.size(); i++) {
-
-            if (listStudent.get(i).getIdStudent() == studentID){
-                
                 return listStudent.get(i);
-                
+
             }
         }
         return null;
     }
 
-    
+    public Student searchStudentByID() {
+
+        boolean checkId = false;
+        String iDValid = null; // It was created as String because I wanted to used the regex for to valid the ID 
+        //and make sure the user type just number!
+
+        do {
+
+            System.out.println("Informe the student's ID: ");
+            iDValid = s.nextLine();
+
+            if (iDValid.matches("[0-9]+")) {
+                checkId = true;
+            } else {
+                System.out.println("ID is just numbers! please type again: ");
+            }
+
+        } while (checkId == false);
+
+        int studentID = Integer.parseInt(iDValid); // convert to the ID to INT because the atribute IDstudent is int 
+        //and It not possible compare String vs int in the nexr for.
+
+        for (int i = 0; i < listStudent.size(); i++) {
+
+            if (listStudent.get(i).getIdStudent() == studentID) {
+
+                return listStudent.get(i);
+
+            }
+        }
+        return null;
+    }
 
     public static void listStudentName() {
         System.out.println("List student name");
@@ -114,7 +130,5 @@ public class controllerStudent {
         System.out.println("List student ID");
 
     }
-
-    
 
 }

@@ -29,15 +29,13 @@ public class Library {
        controllerBook myCB = new controllerBook();
        
         
-       controllerBook myBookController = new controllerBook();
        System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
-       //listBook = myBookController.getBookObj();
-       System.out.println(myBookController.getBookObj());
+       System.out.println(myCB.getBookObj());
             
         
-        System.out.println("-------------------------------------------- Student --------------------------------------------------------\n");
-       controllerStudent myStudentController = new controllerStudent();
-       System.out.println(myStudentController.getStudentObj());
+       //System.out.println("-------------------------------------------- Student --------------------------------------------------------\n");
+       //controllerStudent myStudentController = new controllerStudent();
+       //System.out.println(myStudentController.getStudentObj());
         
     }
 }
