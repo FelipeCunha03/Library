@@ -28,9 +28,12 @@ public class Library {
        Scanner s = new  Scanner(System.in);
        controllerBook myCB = new controllerBook();
        
+       myCB.getBookObj();
+        System.out.println("lista " + myCB.listBook);
+       
         
-       System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
-       System.out.println(myCB.getBookObj());
+     //  System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
+      // System.out.println(myCB.getBookObj());
             
         
        //System.out.println("-------------------------------------------- Student --------------------------------------------------------\n");

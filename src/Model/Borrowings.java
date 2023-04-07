@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -12,26 +13,16 @@ import java.util.Date;
  */
 public class Borrowings {
     
-    private int idborrowing;
+    //private int idborrowing;
     private Book myBook;
     private Student myStudent;
-    private Date dateborrowing;
-    private Date datereturned;
+    private LocalDateTime dateborrowing;
+    //private Date datereturned;
 
-    public Borrowings(int idborrowing, Book myBook, Student myStudent, Date dateborrowing, Date datereturned) {
-        this.idborrowing = idborrowing;
+    public Borrowings(Book myBook, Student myStudent, LocalDateTime dateborrowing) {
         this.myBook = myBook;
         this.myStudent = myStudent;
         this.dateborrowing = dateborrowing;
-        this.datereturned = datereturned;
-    }
-
-    public int getIdborrowing() {
-        return idborrowing;
-    }
-
-    public void setIdborrowing(int idborrowing) {
-        this.idborrowing = idborrowing;
     }
 
     public Book getMyBook() {
@@ -50,26 +41,21 @@ public class Borrowings {
         this.myStudent = myStudent;
     }
 
-    public Date getDateborrowing() {
+    public LocalDateTime getDateborrowing() {
         return dateborrowing;
     }
 
-    public void setDateborrowing(Date dateborrowing) {
+    public void setDateborrowing(LocalDateTime dateborrowing) {
         this.dateborrowing = dateborrowing;
-    }
-
-    public Date getDatereturned() {
-        return datereturned;
-    }
-
-    public void setDatereturned(Date datereturned) {
-        this.datereturned = datereturned;
     }
 
     @Override
     public String toString() {
-        return "Borrowings{" + "idborrowing=" + idborrowing + ", myBook=" + myBook + ", myStudent=" + myStudent + ", dateborrowing=" + dateborrowing + ", datereturned=" + datereturned + '}';
+        return "Borrowings{" + "myBook=" + myBook + ", myStudent=" + myStudent + ", dateborrowing=" + dateborrowing + '}';
     }
+
+
+
     
    
 

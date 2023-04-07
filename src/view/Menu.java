@@ -34,6 +34,8 @@ public class Menu {
           myCB.getBookObj();
           myCS.getStudentObj();
           
+          
+          
 
         do {
 
@@ -121,16 +123,11 @@ public class Menu {
                         break;
 
                     case (7):
-                        myCS.listStudentName();
+                        System.out.println(myCS.listStudentByName());                       
                         break;
 
-                    case (8):
-                        
-                        //System.out.println(myCS.getStudentObj());
-                        
-                        System.out.println(myCS.listStudentID());
-                        
-                        
+                    case (8):                        
+                        System.out.println(myCS.listStudentByID());                       
                         break;
 
                     case (9):
@@ -155,7 +152,7 @@ public class Menu {
                 }
 
             } catch (Exception e) {
-                System.out.println("ERROR! JUST NUMBERS");
+                System.out.println("ERROR! JUST NUMBERS" + e.getMessage());
                 s.nextLine();
 
             }

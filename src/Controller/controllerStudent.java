@@ -120,12 +120,42 @@ public class controllerStudent {
         return null;
     }
 
-    public static void listStudentName() {
-        System.out.println("List student name");
+    public List<Student> listStudentByName() {
+                
+        Student temp;
+        String name, nextName, nameTemp, nameTemp2;
+        for (int i = 0; i < listStudent.size(); i++) {
+            
+            for (int j = 0; j < listStudent.size()- 1 - i; j++) {
+                
+                name = listStudent.get(j).getfNameStudent().trim();
+                nextName=listStudent.get(j+1).getfNameStudent().trim();
+                                              
+                if (name.length() > nextName.length()){
+                    nameTemp = nextName; 
+                    
+                }else{
+                    nameTemp = name;
+                    
+                }
+                                       
+                for (int k = 0; k < nameTemp.length(); k++){
+                    if (name.charAt(j) > nextName.charAt(j)) {
 
+                        temp = listStudent.get(j); 
+                        listStudent.set(j,listStudent.get(j+1));
+                        listStudent.set((j+1), temp);               
+                    }
+                }
+            }
+        }
+        return listStudent;
     }
+        
+    
+    
 
-    public List<Student> listStudentID() {
+    public List<Student> listStudentByID() {
        
         Student temp;
         for (int i = 0; i < listStudent.size(); i++) {

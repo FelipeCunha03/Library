@@ -23,7 +23,7 @@ import javax.xml.transform.Source;
  */
 public class controllerBook {
     
-     List<Book> listBook;
+     public List<Book> listBook;
      Scanner s = new Scanner(System.in);
 
     /**
