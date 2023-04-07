@@ -16,14 +16,16 @@ public class Borrowings {
     //private int idborrowing;
     private Book myBook;
     private Student myStudent;
-    private LocalDateTime dateborrowing;
+    private String dateborrowing;
     //private Date datereturned;
 
-    public Borrowings(Book myBook, Student myStudent, LocalDateTime dateborrowing) {
+    public Borrowings(Book myBook, Student myStudent, String dateborrowing) {
         this.myBook = myBook;
         this.myStudent = myStudent;
         this.dateborrowing = dateborrowing;
     }
+
+   
 
     public Book getMyBook() {
         return myBook;
@@ -41,18 +43,26 @@ public class Borrowings {
         this.myStudent = myStudent;
     }
 
-    public LocalDateTime getDateborrowing() {
+    public String getDateborrowing() {
         return dateborrowing;
     }
 
-    public void setDateborrowing(LocalDateTime dateborrowing) {
+    public void setDateborrowing(String dateborrowing) {
         this.dateborrowing = dateborrowing;
     }
 
-    @Override
+  
+     
     public String toString() {
-        return "Borrowings{" + "myBook=" + myBook + ", myStudent=" + myStudent + ", dateborrowing=" + dateborrowing + '}';
+        return  "\n-------List of books Borred -------\n" + 
+                 myBook +
+                "\n Students's details has borred  " + myStudent +
+                "\n Data de emprestimo: " + dateborrowing +"\n"+
+               "-------------------------";
     }
+
+   
+
 
 
 

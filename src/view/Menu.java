@@ -8,6 +8,7 @@ import Controller.controllerBorrowing;
 import Controller.controllerStudent;
 import Controller.controllerBook;
 import Model.Book;
+import Model.Borrowings;
 import Model.Student;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class Menu {
                 System.out.println("**  6. Search for a specific student by ID;             **");
                 System.out.println("**  7. List all students by name;                       **");
                 System.out.println("**  8. List all students by ID;                         **");
-                System.out.println("**  9. Register a student has borrowed a book;          **");
+                System.out.println("**  9. Borrowe a book;                                  **");
                 System.out.println("**  10. Register a student has returned a book;         **");
                 System.out.println("**  11. List the books borrowed by a specific student   **");
                 System.out.println("**  12. Exit                                            **");
@@ -94,7 +95,10 @@ public class Menu {
                         break;
 
                     case (4):
-                        //myCB.listBookAuthor();
+                        
+                        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------");
+                        System.out.println("List all books by author alphabetical  ");
+                        System.out.println(myCB.listBookByAuthor());
                         break;
 
                     case (5):
@@ -131,7 +135,9 @@ public class Menu {
                         break;
 
                     case (9):
-                        myBw.borrowBook();
+           
+                            System.out.println(myBw.borrowBook());
+                        
                         break;
 
                     case (10):

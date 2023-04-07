@@ -104,7 +104,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "\n-------Student Data-------\nId Student: " + idStudent + 
+        return "\n-------Detains of students -------\nId Student: " + idStudent + 
                 "\nStudent's first name:" + fNameStudent + 
                 "\nStudent's first name: " + lNameStudent + 
                 "\nAddress: " + address + 

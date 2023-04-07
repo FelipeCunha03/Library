@@ -95,6 +95,8 @@ public class controllerBook {
         }
         return null;
     }
+    
+    
     public Book searchBookByAuthor(){
         
         System.out.println("Inform the name book's author : ");
@@ -113,6 +115,48 @@ public class controllerBook {
         }
         
         return null;
+    }
+    
+    public List<Book> listBookByAuthor() {
+
+        Book temp;
+        String name1, name2;
+        String count = null;
+
+        for (int i = 0; i < listBook.size(); i++) {
+
+            for (int j = 0; j < listBook.size() - 1; j++) {
+
+                name1 = listBook.get(j).getfNameAuthor();
+                name2 = listBook.get(j + 1).getfNameAuthor();
+
+                if (name1.length() > name2.length()) {
+
+                    count = name2;
+
+                } else {
+                    count = name1;
+                }
+
+            System.out.println("Menor name: " + count);
+            
+                for (int t = 0; t < count.length(); t++) {
+
+                    if (name1.charAt(j) > name2.charAt(j)) {
+
+                        temp = listBook.get(j);
+                        listBook.set(j, listBook.get(j + 1));
+                        listBook.set((j + 1), temp);
+
+                    }
+                }
+
+            }
+
+        }
+
+        return listBook;
+
     }
 
 }
