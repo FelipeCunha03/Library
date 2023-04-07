@@ -1,9 +1,9 @@
 idStudent,firstNameStudent,lastNameStudent,address,city,phoneNumber,gender,DOB
-1,Kiana,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
-2,Joshua,Lonaker,77 O’Connell Street,Dún Laoghaire,35383089644,M,3/21/1985
-3,Dakota,Blanco,102 Henry Street,Cork,35383089678,F,3/22/1985
+1001,Kiana,Lor,24 Old County Road,Dublin,35383089634,F,3/20/1985
+200,Joshua,Lonaker,77 O’Connell Street,Dún Laoghaire,35383089644,M,3/21/1985
+300,Dakota,Blanco,102 Henry Street,Cork,35383089678,F,3/22/1985
 4,Natasha,Yarusso,12 Parnell Street,Luimneach,3538308989,F,3/23/1985
-5,Brooke,Cazares,27 Charles Stewart Parnell,Gaillimh,35383089777,F,3/24/1985
+500,Brooke,Cazares,27 Charles Stewart Parnell,Gaillimh,35383089777,F,3/24/1985
 6,Rochelle,Johnson,87 James Larkin,Tallaght,35383089789,F,3/25/1985
 7,Joey,Abreu,23 Grafton Street,Waterford,35489785686,M,3/26/1985
 8,Preston,Suarez,68 Wellington Road,Swords,354878986,M,3/27/1985

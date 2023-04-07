@@ -91,15 +91,15 @@ public class controllerStudent {
     public Student searchStudentByID() {
 
         boolean checkId = false;
-        String iDValid = null; // It was created as String because I wanted to used the regex for to valid the ID 
+        String idValid = null; // It was created as String because I wanted to used the regex for to valid the ID 
         //and make sure the user type just number!
 
         do {
 
             System.out.println("Informe the student's ID: ");
-            iDValid = s.nextLine();
+            idValid = s.nextLine();
 
-            if (iDValid.matches("[0-9]+")) {
+            if (idValid.matches("[0-9]+")) {
                 checkId = true;
             } else {
                 System.out.println("ID is just numbers! please type again: ");
@@ -107,13 +107,12 @@ public class controllerStudent {
 
         } while (checkId == false);
 
-        int studentID = Integer.parseInt(iDValid); // convert to the ID to INT because the atribute IDstudent is int 
+        int studentID = Integer.parseInt(idValid); // convert to the ID to INT because the atribute IDstudent is int 
         //and It not possible compare String vs int in the nexr for.
 
         for (int i = 0; i < listStudent.size(); i++) {
 
-            if (listStudent.get(i).getIdStudent() == studentID) {
-
+            if (listStudent.get(i).getIdStudent() == studentID) {            
                 return listStudent.get(i);
 
             }
@@ -126,9 +125,22 @@ public class controllerStudent {
 
     }
 
-    public static void listStudentID() {
-        System.out.println("List student ID");
-
+    public List<Student> listStudentID() {
+       
+        Student temp;
+        for (int i = 0; i < listStudent.size(); i++) {
+            
+            for (int j = 0; j < listStudent.size()- 1; j++) {
+                if (listStudent.get(j).getIdStudent() > listStudent.get(j+1).getIdStudent()) {
+                    temp = listStudent.get(j); 
+                    listStudent.set(j,listStudent.get(j+1));
+                    listStudent.set((j+1), temp);               
+                }
+            }
+        }
+        return listStudent;
     }
-
+    
 }
+
+

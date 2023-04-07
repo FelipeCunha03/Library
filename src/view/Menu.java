@@ -125,7 +125,12 @@ public class Menu {
                         break;
 
                     case (8):
-                        myCS.listStudentID();
+                        
+                        //System.out.println(myCS.getStudentObj());
+                        
+                        System.out.println(myCS.listStudentID());
+                        
+                        
                         break;
 
                     case (9):
