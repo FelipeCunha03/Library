@@ -23,7 +23,7 @@ import java.util.Set;
 public class controllerStudent {
 
     Scanner s = new Scanner(System.in);
-    List<Student> listStudent;
+     static List<Student> listStudent;
 
     public List<Student> getStudentObj() throws FileNotFoundException, IOException {
 

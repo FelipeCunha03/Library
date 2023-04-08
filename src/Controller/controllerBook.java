@@ -22,9 +22,9 @@ import javax.xml.transform.Source;
  * @author felipecunha
  */
 public class controllerBook {
-    
-     public List<Book> listBook;
-     Scanner s = new Scanner(System.in);
+
+    static List<Book> listBook;
+    Scanner s = new Scanner(System.in);
 
     /**
      * The methods that will get the file of book put in list of set.
@@ -58,7 +58,7 @@ public class controllerBook {
                 String title = vetBook[3];
                 String genre = vetBook[4];
 
-                Book bookObj = new Book(idBook,firstNameA,lastNameA,title,genre);
+                Book bookObj = new Book(idBook, firstNameA, lastNameA, title, genre);
 
                 myBookSet.add(bookObj);
 
@@ -76,47 +76,43 @@ public class controllerBook {
         return listBook;
 
     }
-    
-    
-     
-    public Book searchBookByTitle(){
-        
+
+    public Book searchBookByTitle() {
+
         System.out.println("Inform the book's title: ");
         String bookTitle = s.nextLine().trim();
-        
+
         for (int i = 0; i < listBook.size(); i++) {
 
             if (listBook.get(i).getBookTitle().equals(bookTitle)) {
 
                 return listBook.get(i);
             }
-            
 
         }
         return null;
     }
-    
-    
-    public Book searchBookByAuthor(){
-        
+
+    public Book searchBookByAuthor() {
+
         System.out.println("Inform the name book's author : ");
         String nameAuthor = s.nextLine().trim();
-        
+
         String fNameAuthor = nameAuthor.substring(0, nameAuthor.indexOf(" "));
-        String lNameAuthor = nameAuthor.substring(nameAuthor.indexOf(" ")+1); 
-        
+        String lNameAuthor = nameAuthor.substring(nameAuthor.indexOf(" ") + 1);
+
         for (int i = 0; i < listBook.size(); i++) {
 
-            if (listBook.get(i).getfNameAuthor().equals(fNameAuthor) &&
-                    listBook.get(i).getlNameAuthor().endsWith(lNameAuthor)) {
+            if (listBook.get(i).getfNameAuthor().equals(fNameAuthor)
+                    && listBook.get(i).getlNameAuthor().endsWith(lNameAuthor)) {
 
                 return listBook.get(i);
             }
         }
-        
+
         return null;
     }
-    
+
     public List<Book> listBookByAuthor() {
 
         Book temp;
@@ -138,8 +134,8 @@ public class controllerBook {
                     count = name1;
                 }
 
-            System.out.println("Menor name: " + count);
-            
+                System.out.println("Menor name: " + count);
+
                 for (int t = 0; t < count.length(); t++) {
 
                     if (name1.charAt(j) > name2.charAt(j)) {

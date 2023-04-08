@@ -21,58 +21,40 @@ import javax.xml.crypto.Data;
 public class controllerBorrowing {
 
     Scanner s = new Scanner(System.in);
-    controllerBook myCB = new controllerBook();
-    controllerStudent myCS = new controllerStudent();
+
     List<Borrowings> listBorrowing = new ArrayList();
 
     public List<Borrowings> borrowBook() throws IOException {
 
-        String titleBook;
-        myCB.getBookObj();
-        myCS.getStudentObj();
         Borrowings borredBook = null;
         Book myBook = null;
 
-        System.out.println("Inform the book's title: ");
-        String bookTitle = s.nextLine().trim();
+        controllerBook myCB = new controllerBook();
 
-        for (int i = 0; i < myCB.listBook.size(); i++) {
+        myBook = myCB.searchBookByTitle();
 
-            if (myCB.listBook.get(i).getBookTitle().equals(bookTitle)) {
+        for (int i = 0; i < controllerBook.listBook.size(); i++) {
 
-                if (myCB.listBook.get(i).isIsAvailable() == true) {
+            if (controllerBook.listBook.get(i).isIsAvailable() == true) {
 
-                    myCB.listBook.get(i).setIsAvailable(false);
-
-                    myBook = myCB.listBook.get(i);
-
-                } else {
-                    System.out.println("Book is borred !");
-                }
-
+                controllerBook.listBook.get(i).setIsAvailable(false);
+                myBook = controllerBook.listBook.get(i);
+            } else {
+                System.out.println("Book is not avalable!");
+                return null;
             }
-
-        }
-        
-       Student myStudent = null;
-       System.out.println("Informe the Students's ID: ");
-       int idStudent = s.nextInt();
-       
-       for (int j = 0; j < myCS.listStudent.size(); j++) {
-
-            if (myCS.listStudent.get(j).getIdStudent() == idStudent ) {
-                
-                   myStudent = myCS.listStudent.get(j);
-
-                }
-
         }
 
-             String data = "01/01/1023";
-             Borrowings myBookBoored = new  Borrowings(myBook,myStudent,data);
-             
-             listBorrowing.add(myBookBoored);
-       
+        controllerStudent myCS = new controllerStudent();
+        Student myStudent;
+
+        myStudent = myCS.searchStudentByID();
+
+        String data = "01/01/2023";
+
+        Borrowings myBorred = new Borrowings(myBook, myStudent, data);
+        listBorrowing.add(myBorred);
+
         return listBorrowing;
     }
 

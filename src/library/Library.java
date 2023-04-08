@@ -29,7 +29,7 @@ public class Library {
        controllerBook myCB = new controllerBook();
        
        myCB.getBookObj();
-        System.out.println("lista " + myCB.listBook);
+        
        
         
      //  System.out.println("-------------------------------------------- Books --------------------------------------------------------\n");
