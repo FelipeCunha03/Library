@@ -82,13 +82,13 @@ public class Book {
     // methodos toString  for output the book as String.
     @Override
     public String toString() {
-        return  "\n-------Detains of book -------\nId Book: " + idBook +
+        return  "\n---------------Book's details --------------\nId Book: " + idBook +
                 "\nAuthor's first name: " + fNameAuthor +
                 "\nAuthor's last name: " + lNameAuthor +
                 "\nBook's title: " + bookTitle +
                 "\nGenre: " + genre + 
                 "\nAvailable: " + isAvailable + "\n"
-                + "-------------------------";
+                + "--------------------------------------------";
     }
 
     

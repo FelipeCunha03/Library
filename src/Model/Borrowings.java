@@ -4,8 +4,9 @@
  */
 package Model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -16,13 +17,14 @@ public class Borrowings {
     //private int idborrowing;
     private Book myBook;
     private Student myStudent;
-    private String dateborrowing;
-    //private Date datereturned;
+    private String dataBorrowing;
+    private String dataReturned;
 
-    public Borrowings(Book myBook, Student myStudent, String dateborrowing) {
+    public Borrowings(Book myBook, Student myStudent, String dataBorrowing, String dataReturned) {
         this.myBook = myBook;
         this.myStudent = myStudent;
-        this.dateborrowing = dateborrowing;
+        this.dataBorrowing = dataBorrowing;
+        this.dataReturned = dataReturned;
     }
 
    
@@ -43,22 +45,34 @@ public class Borrowings {
         this.myStudent = myStudent;
     }
 
-    public String getDateborrowing() {
-        return dateborrowing;
+    public String getDataBorrowing() {
+        return dataBorrowing;
     }
 
-    public void setDateborrowing(String dateborrowing) {
-        this.dateborrowing = dateborrowing;
+    public void setDataBorrowing(String dataBorrowing) {
+        this.dataBorrowing = dataBorrowing;
     }
 
-  
+    public String getDataReturned() {
+        return dataReturned;
+    }
+
+    public void setDataReturned(String dataReturned) {
+        this.dataReturned = dataReturned;
+    }
+
+   
+
+ 
+
+    
      
     public String toString() {
-        return  "\n-------List of books Borred -------\n" + 
-                 myBook +
-                "\n Students's details has borred  " + myStudent +
-                "\n Data de emprestimo: " + dateborrowing +"\n"+
-               "-------------------------";
+        return  "\n***Confirmed the borrowing of the book to the student***\n"+
+                myBook +
+                "\n" + myStudent +
+                "\nBorrowed date: " + dataBorrowing +"\n--------------------------------------------"+ 
+                "\nReturned date: " + dataReturned +"\n--------------------------------------------";
     }
 
    

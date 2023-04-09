@@ -68,7 +68,7 @@ public class controllerBook {
 
         } catch (Exception e) {
 
-            System.out.println("Error open file" + e.getMessage());
+            System.out.println("Error open file\nMessage error: " + e.getMessage());
         }
 
         listBook = new ArrayList<>(myBookSet);// to convert setList of book to arrayList,I think It's easier to use List for maniputation.
@@ -94,13 +94,20 @@ public class controllerBook {
     }
 
     public Book searchBookByAuthor() {
-
+        
+        String fNameAuthor, lNameAuthor;
         System.out.println("Inform the name book's author : ");
         String nameAuthor = s.nextLine().trim();
-
-        String fNameAuthor = nameAuthor.substring(0, nameAuthor.indexOf(" "));
-        String lNameAuthor = nameAuthor.substring(nameAuthor.indexOf(" ") + 1);
-
+        
+        if (nameAuthor.contains(" ")){
+            fNameAuthor = nameAuthor.substring(0, nameAuthor.indexOf(" "));
+            lNameAuthor = nameAuthor.substring(nameAuthor.indexOf(" ") + 1);
+            
+        }else{
+            System.out.println("Inform the author's full name.");
+            return null;
+        }
+        
         for (int i = 0; i < listBook.size(); i++) {
 
             if (listBook.get(i).getfNameAuthor().equals(fNameAuthor)
@@ -143,14 +150,11 @@ public class controllerBook {
                         temp = listBook.get(j);
                         listBook.set(j, listBook.get(j + 1));
                         listBook.set((j + 1), temp);
-
                     }
                 }
-
             }
-
         }
-
+        System.out.println("*************LIST BOOKS BY AUTHOR ORDER*************");
         return listBook;
 
     }

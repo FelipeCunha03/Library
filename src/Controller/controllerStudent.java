@@ -23,7 +23,7 @@ import java.util.Set;
 public class controllerStudent {
 
     Scanner s = new Scanner(System.in);
-     static List<Student> listStudent;
+    static List<Student> listStudent;
 
     public List<Student> getStudentObj() throws FileNotFoundException, IOException {
 
@@ -60,7 +60,7 @@ public class controllerStudent {
 
         } catch (Exception e) {
 
-            System.out.println("Error open file" + e.getMessage());
+            System.out.println("Error to open file\nMessage error: " + e.getMessage());
         }
 
         listStudent = new ArrayList<>(myStudentSet);
@@ -69,22 +69,28 @@ public class controllerStudent {
     }
 
     public Student searchStudentByName() {
-
+        
+        String fNameStudent, lNameStudent;
         System.out.println("Inform the student's name: ");
         String studentName = s.nextLine();
 
-        String fNameStudent = studentName.substring(0, studentName.indexOf(" "));
-        String lNameStudent = studentName.substring(studentName.indexOf(" ") + 1);
-
+        if (studentName.contains(" ")){
+            fNameStudent = studentName.substring(0, studentName.indexOf(" "));      
+            lNameStudent = studentName.substring(studentName.indexOf(" ") + 1);
+            
+        }else{
+            System.out.println("Inform the student's full name.");
+            return null;
+        }
+            
         for (int i = 0; i < listStudent.size(); i++) {
 
             if ((listStudent.get(i).getfNameStudent().equals(fNameStudent))
-                    && (listStudent.get(i).getlNameStudent().equals(lNameStudent))) {
+                && (listStudent.get(i).getlNameStudent().equals(lNameStudent))) {
 
                 return listStudent.get(i);
-
             }
-        }
+        }      
         return null;
     }
 
@@ -122,33 +128,63 @@ public class controllerStudent {
 
     public List<Student> listStudentByName() {
                 
-        Student temp;
-        String name, nextName, nameTemp, nameTemp2;
-        for (int i = 0; i < listStudent.size(); i++) {
-            
-            for (int j = 0; j < listStudent.size()- 1 - i; j++) {
-                
-                name = listStudent.get(j).getfNameStudent().trim();
-                nextName=listStudent.get(j+1).getfNameStudent().trim();
-                                              
-                if (name.length() > nextName.length()){
-                    nameTemp = nextName; 
-                    
-                }else{
-                    nameTemp = name;
-                    
-                }
-                                       
-                for (int k = 0; k < nameTemp.length(); k++){
-                    if (name.charAt(j) > nextName.charAt(j)) {
+        
+        String name, nextName;
+        
+        try{
 
-                        temp = listStudent.get(j); 
-                        listStudent.set(j,listStudent.get(j+1));
-                        listStudent.set((j+1), temp);               
+//            Student temp;
+//            for (int i = 0; i < listStudent.size(); i++) {               
+//                    
+//                for (int j = 0; j < listStudent.size()- 1; j++) {
+//
+//                   // name = listStudent.get(j).getfNameStudent().trim();
+//                   // nextName=listStudent.get(j+1).getfNameStudent().trim();
+//                    
+//                   // if (name.compareTo(nextName) > 0){
+//                   
+//                   if (listStudent.get(j).getfNameStudent().compareTo(listStudent.get(j+1).getfNameStudent())> 0){
+//                       
+//                       System.out.println("PRINT get (j) " + listStudent.get(j));
+//                        temp = listStudent.get(j);
+//                        System.out.println("PRINT TEMP " + temp);
+//                        //listStudent.get(j) = listStudent.get(j+1);
+//                        //listStudent.get(j+1) = temp;
+//                    }                   
+//                }
+//            }
+//            for (int i = 0; i < listStudent.size(); i++) {
+//                System.out.println(listStudent.get(i));
+//            }
+            for(int i = 0; i < listStudent.size(); i++) {
+                
+                for (int j = 0; j < listStudent.size() - 1; j++) {
+                    
+                    if(listStudent.get(j).getfNameStudent().trim().compareTo(listStudent.get(j+1).getfNameStudent().trim()) > 0) {
+                        
+                        Student tempStudent = listStudent.get(j);
+                        listStudent.set(j, listStudent.get(j+1));
+                        listStudent.set(j+1, tempStudent);
                     }
                 }
             }
+            
+//            for (int i = 0; i < array.length; i++) {
+//            printArray(array);//prints step by step the sorting algorithm
+//            for (int j = 0; j < array.length - 1; j++) {
+//                if (array[j] > array[j + 1]) {
+//                    temp = array[j]; //save the value of array[j] in the temp
+//                    array[j] = array[j + 1];//change the value of array[j] for array[j+1]
+//                    array[j + 1] = temp; //save the value of temp into array[j+1]                   
+//                }
+//            }
+//        }   
+            
+//
+        }catch(Exception e){
+            System.out.println("Sorry, something wrong has happened.\nMessage error: " + e.getMessage());     
         }
+        System.out.println("*************LIST STUDENTS BY NAME ORDER*************");
         return listStudent;
     }
         
@@ -168,6 +204,7 @@ public class controllerStudent {
                 }
             }
         }
+        System.out.println("*************LIST STUDENTS BY ID ORDER*************");
         return listStudent;
     }
     

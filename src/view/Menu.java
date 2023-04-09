@@ -28,15 +28,13 @@ public class Menu {
         Scanner s = new Scanner(System.in);
         controllerBook myCB = new controllerBook();
         controllerStudent myCS = new controllerStudent();
-        controllerBorrowing myBw = new controllerBorrowing();
+        controllerBorrowing myBW = new controllerBorrowing();
 
     
         // calling the methot that will get the file data of books/students!
           myCB.getBookObj();
           myCS.getStudentObj();
-          
-          
-          
+    
 
         do {
 
@@ -71,7 +69,7 @@ public class Menu {
                         Book myBook;
                         myBook = myCB.searchBookByTitle();
                         if (myBook == null) {
-                            System.out.println("Book not found!");
+                            System.out.println("Book was not found!");
 
                         } else {
                             System.out.println(myBook);
@@ -83,7 +81,7 @@ public class Menu {
                         myBook = myCB.searchBookByAuthor();
 
                         if (myBook == null) {
-                            System.out.println("Book not found!");
+                            System.out.println("Author was not found!");
 
                         } else {
                             System.out.println(myBook);
@@ -95,9 +93,6 @@ public class Menu {
                         break;
 
                     case (4):
-                        
-                        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                        System.out.println("List all books by author alphabetical  ");
                         System.out.println(myCB.listBookByAuthor());
                         break;
 
@@ -107,7 +102,7 @@ public class Menu {
                         myStudent = myCS.searchStudentByName();
 
                         if (myStudent == null) {
-                            System.out.println("Student not found!");
+                            System.out.println("Student was not found!");
 
                         } else {
                             System.out.println(myStudent);
@@ -119,7 +114,7 @@ public class Menu {
                         myStudent = myCS.searchStudentByID();
 
                         if (myStudent == null) {
-                            System.out.println("ID not found!");
+                            System.out.println("ID was not found!");
 
                         } else {
                             System.out.println(myStudent);
@@ -136,34 +131,45 @@ public class Menu {
 
                     case (9):
                         
-                           System.out.println(myBw.borrowBook());
+                        Borrowings myBorrowing;
+                        myBorrowing = myBW.borrowBook();
                         
-                        break;
+                        if (myBorrowing == null) {
+                            System.out.println("Sorry, book is not available to be borrowed.");
 
+                        } else {
+                            System.out.println(myBorrowing);
+                        }
+                        break;
+                           
                     case (10):
-                        myBw.returnBook();
+                        myBW.returnBook();
                         break;
 
                     case (11):
-                        myBw.listBookBorrowed();
+                        System.out.println(myBW.listBookBorrowed());
+                        break;
+                        
+                    case (12):
+                        System.out.println(myBW.listBookBorrowedByStudent());
                         break;
 
-                    case (12):
+                    case (13):
                         System.out.println("The programar is over!");
                         break;
 
                     default:
-                        System.out.println("Please, choose an option between 1 and 12");
+                        System.out.println("Please, choose an option between 1 and 12.");
 
                 }
 
             } catch (Exception e) {
-                System.out.println("ERROR! JUST NUMBERS" + e.getMessage());
+                System.out.println("Sorry, something wrong has happened :( \nMessage error: " + e.getMessage());
                 s.nextLine();
 
             }
 
-        } while (option != 12);
+        } while (option != 13);
 
     }
 
