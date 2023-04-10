@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
@@ -128,62 +129,19 @@ public class controllerStudent {
 
     public List<Student> listStudentByName() {
                 
-        
-        String name, nextName;
-        
-        try{
-
-//            Student temp;
-//            for (int i = 0; i < listStudent.size(); i++) {               
-//                    
-//                for (int j = 0; j < listStudent.size()- 1; j++) {
-//
-//                   // name = listStudent.get(j).getfNameStudent().trim();
-//                   // nextName=listStudent.get(j+1).getfNameStudent().trim();
-//                    
-//                   // if (name.compareTo(nextName) > 0){
-//                   
-//                   if (listStudent.get(j).getfNameStudent().compareTo(listStudent.get(j+1).getfNameStudent())> 0){
-//                       
-//                       System.out.println("PRINT get (j) " + listStudent.get(j));
-//                        temp = listStudent.get(j);
-//                        System.out.println("PRINT TEMP " + temp);
-//                        //listStudent.get(j) = listStudent.get(j+1);
-//                        //listStudent.get(j+1) = temp;
-//                    }                   
-//                }
-//            }
-//            for (int i = 0; i < listStudent.size(); i++) {
-//                System.out.println(listStudent.get(i));
-//            }
             for(int i = 0; i < listStudent.size(); i++) {
                 
                 for (int j = 0; j < listStudent.size() - 1; j++) {
-                    
+                                     
                     if(listStudent.get(j).getfNameStudent().trim().compareTo(listStudent.get(j+1).getfNameStudent().trim()) > 0) {
-                        
+                     
                         Student tempStudent = listStudent.get(j);
                         listStudent.set(j, listStudent.get(j+1));
-                        listStudent.set(j+1, tempStudent);
+                        listStudent.set(j+1, tempStudent);                                          
                     }
                 }
             }
             
-//            for (int i = 0; i < array.length; i++) {
-//            printArray(array);//prints step by step the sorting algorithm
-//            for (int j = 0; j < array.length - 1; j++) {
-//                if (array[j] > array[j + 1]) {
-//                    temp = array[j]; //save the value of array[j] in the temp
-//                    array[j] = array[j + 1];//change the value of array[j] for array[j+1]
-//                    array[j + 1] = temp; //save the value of temp into array[j+1]                   
-//                }
-//            }
-//        }   
-            
-//
-        }catch(Exception e){
-            System.out.println("Sorry, something wrong has happened.\nMessage error: " + e.getMessage());     
-        }
         System.out.println("*************LIST STUDENTS BY NAME ORDER*************");
         return listStudent;
     }
