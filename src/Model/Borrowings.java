@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  * @author rapha
  */
 public class Borrowings {
-    
+
     //private int idborrowing;
     private Book myBook;
     private Student myStudent;
@@ -26,8 +26,6 @@ public class Borrowings {
         this.dataBorrowing = dataBorrowing;
         this.dataReturned = dataReturned;
     }
-
-   
 
     public Book getMyBook() {
         return myBook;
@@ -61,28 +59,12 @@ public class Borrowings {
         this.dataReturned = dataReturned;
     }
 
-   
-
- 
-
-    
-     
     public String toString() {
-        return  "\n***Confirmed the borrowing of the book to the student***\n"+
-                myBook +
-                "\n" + myStudent +
-                "\nBorrowed date: " + dataBorrowing +"\n--------------------------------------------"+ 
-                "\nReturned date: " + dataReturned +"\n--------------------------------------------";
+        return ""
+                + myBook
+                + "\n" + myStudent
+                + "\nBorrowed date: " + dataBorrowing + "\n--------------------------------------------"
+                + "\nReturned date: " + dataReturned + "\n--------------------------------------------";
     }
 
-   
-
-
-
-
-    
-   
-
-    
-    
 }

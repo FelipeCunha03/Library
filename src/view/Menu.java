@@ -23,18 +23,16 @@ public class Menu {
 
     public static void main(String[] args) throws IOException {
 
-        int option = 0;
-
         Scanner s = new Scanner(System.in);
         controllerBook myCB = new controllerBook();
         controllerStudent myCS = new controllerStudent();
         controllerBorrowing myBW = new controllerBorrowing();
+        String bookDetails = "---------------Book's details --------------";
+        int option = 0;
 
-    
         // calling the methot that will get the file data of books/students!
-          myCB.getBookObj();
-          myCS.getStudentObj();
-    
+        myCB.getBookObj();
+        myCS.getStudentObj();
 
         do {
 
@@ -52,10 +50,11 @@ public class Menu {
                 System.out.println("**  6. Search for a specific student by ID;             **");
                 System.out.println("**  7. List all students by name;                       **");
                 System.out.println("**  8. List all students by ID;                         **");
-                System.out.println("**  9. Borrowe a book;                                  **");
+                System.out.println("**  9. Register that a student has borrowed a book      **");
                 System.out.println("**  10. Register a student has returned a book;         **");
-                System.out.println("**  11. List the books borrowed by a specific student   **");
-                System.out.println("**  12. Exit                                            **");
+                System.out.println("**  11. List all the book borrowed                      **");
+                System.out.println("**  12. List the books borrowed by a specific studen    **");
+                System.out.println("**  13. Exit                                            **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
@@ -65,13 +64,15 @@ public class Menu {
                 switch (option) {
 
                     case 1:
-                        
+
                         Book myBook;
                         myBook = myCB.searchBookByTitle();
                         if (myBook == null) {
                             System.out.println("Book was not found!");
 
                         } else {
+
+                            System.out.println(bookDetails);
                             System.out.println(myBook);
                         }
                         break;
@@ -84,15 +85,20 @@ public class Menu {
                             System.out.println("Author was not found!");
 
                         } else {
+                            System.out.println(bookDetails);
                             System.out.println(myBook);
                         }
                         break;
 
                     case (3):
+
+                        System.out.println(bookDetails);
                         System.out.println(myCB.listBookByTitle());
                         break;
 
                     case (4):
+
+                        System.out.println(bookDetails);
                         System.out.println(myCB.listBookByAuthor());
                         break;
 
@@ -122,26 +128,27 @@ public class Menu {
                         break;
 
                     case (7):
-                        System.out.println(myCS.listStudentByName());                       
+                        System.out.println(myCS.listStudentByName());
                         break;
 
-                    case (8):                        
-                        System.out.println(myCS.listStudentByID());                       
+                    case (8):
+                        System.out.println(myCS.listStudentByID());
                         break;
 
                     case (9):
-                        
+
                         Borrowings myBorrowing;
                         myBorrowing = myBW.borrowBook();
-                        
+
                         if (myBorrowing == null) {
                             s.nextLine();
 
                         } else {
+                            System.out.println(" \nConfirmed the borrowing of the book to the student : ");
                             System.out.println(myBorrowing);
                         }
                         break;
-                           
+
                     case (10):
                         myBW.returnBook();
                         break;
@@ -149,8 +156,9 @@ public class Menu {
                     case (11):
                         System.out.println(myBW.listBookBorrowed());
                         break;
-                        
+
                     case (12):
+
                         System.out.println(myBW.listBookBorrowedByStudent());
                         break;
 
@@ -164,7 +172,9 @@ public class Menu {
                 }
 
             } catch (Exception e) {
+
                 System.out.println("Sorry, something wrong has happened :( \nMessage error: " + e.getMessage());
+
                 s.nextLine();
 
             }

@@ -4,15 +4,18 @@
  */
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author felipecunha
  */
 public class Student {
-    
+
     private int idStudent;
     private String fNameStudent;
-    private String lNameStudent;   
+    private String lNameStudent;
     private String address;
     private String city;
     private String phoneNumber;
@@ -28,10 +31,10 @@ public class Student {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.DOB = DOB;
-    }
-    
-    // gets and setters
 
+    }
+
+    // gets and setters
     public int getIdStudent() {
         return idStudent;
     }
@@ -95,28 +98,19 @@ public class Student {
     public void setDOB(String DOB) {
         this.DOB = DOB;
     }
-    
-    
-
-   
-
-    
 
     @Override
     public String toString() {
         return "\n---------------Student's details ------------\n"
-                + "Id Student: " + idStudent + 
-                "\nStudent's first name:" + fNameStudent + 
-                "\nStudent's first name: " + lNameStudent + 
-                "\nAddress: " + address + 
-                "\nCity: " + city + 
-                "\nPhone Number: " + phoneNumber + 
-                "\nGender: " + gender + 
-                "\nDate of Birth: " + DOB +"\n"
+                + "Id Student: " + idStudent
+                + "\nStudent's first name:" + fNameStudent
+                + "\nStudent's first name: " + lNameStudent
+                + "\nAddress: " + address
+                + "\nCity: " + city
+                + "\nPhone Number: " + phoneNumber
+                + "\nGender: " + gender
+                + "\nDate of Birth: " + DOB + "\n"
                 + "---------------------------------------------";
     }
 
-    
-
-  
 }

@@ -96,20 +96,20 @@ public class controllerBook {
     }
 
     public Book searchBookByAuthor() {
-        
+
         String fNameAuthor, lNameAuthor;
         System.out.println("Inform the name book's author : ");
         String nameAuthor = s.nextLine().trim();
-        
-        if (nameAuthor.contains(" ")){
+
+        if (nameAuthor.contains(" ")) {
             fNameAuthor = nameAuthor.substring(0, nameAuthor.indexOf(" "));
             lNameAuthor = nameAuthor.substring(nameAuthor.indexOf(" ") + 1);
-            
-        }else{
+
+        } else {
             System.out.println("Inform the author's full name.");
             return null;
         }
-        
+
         for (int i = 0; i < listBook.size(); i++) {
 
             if (listBook.get(i).getfNameAuthor().equals(fNameAuthor)
@@ -123,16 +123,16 @@ public class controllerBook {
     }
 
     public List<Book> listBookByAuthor() {
-      
-        for(int i = 0; i < listBook.size(); i++) {
-                
+
+        for (int i = 0; i < listBook.size(); i++) {
+
             for (int j = 0; j < listBook.size() - 1; j++) {
-                                     
-                if(listBook.get(j).getfNameAuthor().trim().compareTo(listBook.get(j+1).getfNameAuthor().trim()) > 0) {
-                     
+
+                if (listBook.get(j).getfNameAuthor().trim().compareTo(listBook.get(j + 1).getfNameAuthor().trim()) > 0) {
+
                     Book tempAuthor = listBook.get(j);
-                    listBook.set(j, listBook.get(j+1));
-                    listBook.set(j+1, tempAuthor);                                          
+                    listBook.set(j, listBook.get(j + 1));
+                    listBook.set(j + 1, tempAuthor);
                 }
             }
         }
@@ -141,18 +141,18 @@ public class controllerBook {
         return listBook;
 
     }
-    
+
     public List<Book> listBookByTitle() {
-      
-        for(int i = 0; i < listBook.size(); i++) {
-                
+
+        for (int i = 0; i < listBook.size(); i++) {
+
             for (int j = 0; j < listBook.size() - 1; j++) {
-                                     
-                if(listBook.get(j).getBookTitle().trim().compareTo(listBook.get(j+1).getBookTitle().trim()) > 0) {
-                     
+
+                if (listBook.get(j).getBookTitle().trim().compareTo(listBook.get(j + 1).getBookTitle().trim()) > 0) {
+
                     Book tempTitle = listBook.get(j);
-                    listBook.set(j, listBook.get(j+1));
-                    listBook.set(j+1, tempTitle);                                          
+                    listBook.set(j, listBook.get(j + 1));
+                    listBook.set(j + 1, tempTitle);
                 }
             }
         }

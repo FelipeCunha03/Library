@@ -70,28 +70,28 @@ public class controllerStudent {
     }
 
     public Student searchStudentByName() {
-        
+
         String fNameStudent, lNameStudent;
         System.out.println("Inform the student's name: ");
         String studentName = s.nextLine();
 
-        if (studentName.contains(" ")){
-            fNameStudent = studentName.substring(0, studentName.indexOf(" "));      
+        if (studentName.contains(" ")) {
+            fNameStudent = studentName.substring(0, studentName.indexOf(" "));
             lNameStudent = studentName.substring(studentName.indexOf(" ") + 1);
-            
-        }else{
+
+        } else {
             System.out.println("Inform the student's full name.");
             return null;
         }
-            
+
         for (int i = 0; i < listStudent.size(); i++) {
 
             if ((listStudent.get(i).getfNameStudent().equals(fNameStudent))
-                && (listStudent.get(i).getlNameStudent().equals(lNameStudent))) {
+                    && (listStudent.get(i).getlNameStudent().equals(lNameStudent))) {
 
                 return listStudent.get(i);
             }
-        }      
+        }
         return null;
     }
 
@@ -119,7 +119,7 @@ public class controllerStudent {
 
         for (int i = 0; i < listStudent.size(); i++) {
 
-            if (listStudent.get(i).getIdStudent() == studentID) {            
+            if (listStudent.get(i).getIdStudent() == studentID) {
                 return listStudent.get(i);
 
             }
@@ -128,44 +128,39 @@ public class controllerStudent {
     }
 
     public List<Student> listStudentByName() {
-                
-            for(int i = 0; i < listStudent.size(); i++) {
-                
-                for (int j = 0; j < listStudent.size() - 1; j++) {
-                                     
-                    if(listStudent.get(j).getfNameStudent().trim().compareTo(listStudent.get(j+1).getfNameStudent().trim()) > 0) {
-                     
-                        Student tempStudent = listStudent.get(j);
-                        listStudent.set(j, listStudent.get(j+1));
-                        listStudent.set(j+1, tempStudent);                                          
-                    }
+
+        for (int i = 0; i < listStudent.size(); i++) {
+
+            for (int j = 0; j < listStudent.size() - 1; j++) {
+
+                if (listStudent.get(j).getfNameStudent().trim().compareTo(listStudent.get(j + 1).getfNameStudent().trim()) > 0) {
+
+                    Student tempStudent = listStudent.get(j);
+                    listStudent.set(j, listStudent.get(j + 1));
+                    listStudent.set(j + 1, tempStudent);
                 }
             }
-            
+        }
+
         System.out.println("*************LIST STUDENTS BY NAME ORDER*************");
         return listStudent;
     }
-        
-    
-    
 
     public List<Student> listStudentByID() {
-       
+
         Student temp;
         for (int i = 0; i < listStudent.size(); i++) {
-            
-            for (int j = 0; j < listStudent.size()- 1; j++) {
-                if (listStudent.get(j).getIdStudent() > listStudent.get(j+1).getIdStudent()) {
-                    temp = listStudent.get(j); 
-                    listStudent.set(j,listStudent.get(j+1));
-                    listStudent.set((j+1), temp);               
+
+            for (int j = 0; j < listStudent.size() - 1; j++) {
+                if (listStudent.get(j).getIdStudent() > listStudent.get(j + 1).getIdStudent()) {
+                    temp = listStudent.get(j);
+                    listStudent.set(j, listStudent.get(j + 1));
+                    listStudent.set((j + 1), temp);
                 }
             }
         }
         System.out.println("*************LIST STUDENTS BY ID ORDER*************");
         return listStudent;
     }
-    
+
 }
-
-

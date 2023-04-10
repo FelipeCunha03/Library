@@ -9,18 +9,16 @@ package Model;
  * @author felipecunha
  */
 public class Book {
-    
+
     // Atribute of Book.
-    private String  idBook;
-    private String  fNameAuthor;
-    private String  lNameAuthor;
-    private String  bookTitle;
-    private String  genre;
+    private String idBook;
+    private String fNameAuthor;
+    private String lNameAuthor;
+    private String bookTitle;
+    private String genre;
     private boolean isAvailable;
 
-    
     // Constructor
-
     public Book(String idBook, String fNameAuthor, String lNameAuthor, String bookTitle, String genre) {
         this.idBook = idBook;
         this.fNameAuthor = fNameAuthor;
@@ -31,7 +29,7 @@ public class Book {
     }
 
     public String getIdBook() {
-        return  idBook;
+        return idBook;
     }
 
     public void setIdBook(String idBook) {
@@ -82,19 +80,13 @@ public class Book {
     // methodos toString  for output the book as String.
     @Override
     public String toString() {
-        return  "\n---------------Book's details --------------\nId Book: " + idBook +
-                "\nAuthor's first name: " + fNameAuthor +
-                "\nAuthor's last name: " + lNameAuthor +
-                "\nBook's title: " + bookTitle +
-                "\nGenre: " + genre + 
-                "\nAvailable: " + isAvailable + "\n"
+        return "\nId Book: " + idBook
+                + "\nAuthor's first name: " + fNameAuthor
+                + "\nAuthor's last name: " + lNameAuthor
+                + "\nBook's title: " + bookTitle
+                + "\nGenre: " + genre
+                + "\nAvailable: " + isAvailable + "\n"
                 + "--------------------------------------------";
     }
 
-    
-    
-    
-    
-    
-    
 }
