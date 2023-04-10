@@ -135,7 +135,7 @@ public class Menu {
                         myBorrowing = myBW.borrowBook();
                         
                         if (myBorrowing == null) {
-                            System.out.println("Sorry, book is not available to be borrowed.");
+                            s.nextLine();
 
                         } else {
                             System.out.println(myBorrowing);

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import javax.xml.crypto.Data;
+import javax.xml.transform.Source;
 
 /**
  *
@@ -38,7 +39,10 @@ public class controllerBorrowing {
         
         //call the method to search book by title
         myBook = myCB.searchBookByTitle();
-        
+        if (myBook == null) {
+            System.out.println("Book was not found!");
+            return null;
+        }
         //check if the book is avaiable to be borrowed
         if (myBook.isIsAvailable()==true){
             myBook.setIsAvailable(false);
@@ -63,6 +67,7 @@ public class controllerBorrowing {
             
             //return the book borrowed
             return myBorred;
+            
         
         //if the book is not avaiable to be borrowed, ask the user about go to the queue
         }else{
@@ -75,7 +80,9 @@ public class controllerBorrowing {
                 System.out.println("Confirmed! You are on the queue :) ");
             }
         //if the book is borrowed and user doesn't want to wait on the queue, return null
+        System.out.println("Sorry, book is not available to be borrowed.");
         return null;    
+        
         }
    
     }

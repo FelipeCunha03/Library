@@ -4,7 +4,9 @@
  */
 package Controller;
 
+import static Controller.controllerStudent.listStudent;
 import Model.Book;
+import Model.Student;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -122,38 +124,48 @@ public class controllerBook {
 
     public List<Book> listBookByAuthor() {
 
-        Book temp;
-        String name1, name2;
-        String count = null;
-
-        for (int i = 0; i < listBook.size(); i++) {
-
+      
+        for(int i = 0; i < listBook.size(); i++) {
+                
             for (int j = 0; j < listBook.size() - 1; j++) {
-
-                name1 = listBook.get(j).getfNameAuthor();
-                name2 = listBook.get(j + 1).getfNameAuthor();
-
-                if (name1.length() > name2.length()) {
-
-                    count = name2;
-
-                } else {
-                    count = name1;
-                }
-
-                System.out.println("Menor name: " + count);
-
-                for (int t = 0; t < count.length(); t++) {
-
-                    if (name1.charAt(j) > name2.charAt(j)) {
-
-                        temp = listBook.get(j);
-                        listBook.set(j, listBook.get(j + 1));
-                        listBook.set((j + 1), temp);
-                    }
+                                     
+                if(listBook.get(j).getfNameAuthor().trim().compareTo(listBook.get(j+1).getfNameAuthor().trim()) > 0) {
+                     
+                    Book tempAuthor = listBook.get(j);
+                    listBook.set(j, listBook.get(j+1));
+                    listBook.set(j+1, tempAuthor);                                          
                 }
             }
         }
+
+//        for (int i = 0; i < listBook.size(); i++) {;;;;;
+//
+//            for (int j = 0; j < listBook.size() - 1; j++) {
+//
+//                name1 = listBook.get(j).getfNameAuthor();
+//                name2 = listBook.get(j + 1).getfNameAuthor();
+//
+//                if (name1.length() > name2.length()) {
+//
+//                    count = name2;
+//
+//                } else {
+//                    count = name1;
+//                }
+//
+//                System.out.println("Menor name: " + count);
+//
+//                for (int t = 0; t < count.length(); t++) {
+//
+//                    if (name1.charAt(j) > name2.charAt(j)) {
+//
+//                        temp = listBook.get(j);
+//                        listBook.set(j, listBook.get(j + 1));
+//                        listBook.set((j + 1), temp);
+//                    }
+//                }
+//            }
+//        }
         System.out.println("*************LIST BOOKS BY AUTHOR ORDER*************");
         return listBook;
 
