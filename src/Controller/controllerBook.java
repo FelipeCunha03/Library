@@ -123,7 +123,6 @@ public class controllerBook {
     }
 
     public List<Book> listBookByAuthor() {
-
       
         for(int i = 0; i < listBook.size(); i++) {
                 
@@ -138,35 +137,27 @@ public class controllerBook {
             }
         }
 
-//        for (int i = 0; i < listBook.size(); i++) {;;;;;
-//
-//            for (int j = 0; j < listBook.size() - 1; j++) {
-//
-//                name1 = listBook.get(j).getfNameAuthor();
-//                name2 = listBook.get(j + 1).getfNameAuthor();
-//
-//                if (name1.length() > name2.length()) {
-//
-//                    count = name2;
-//
-//                } else {
-//                    count = name1;
-//                }
-//
-//                System.out.println("Menor name: " + count);
-//
-//                for (int t = 0; t < count.length(); t++) {
-//
-//                    if (name1.charAt(j) > name2.charAt(j)) {
-//
-//                        temp = listBook.get(j);
-//                        listBook.set(j, listBook.get(j + 1));
-//                        listBook.set((j + 1), temp);
-//                    }
-//                }
-//            }
-//        }
         System.out.println("*************LIST BOOKS BY AUTHOR ORDER*************");
+        return listBook;
+
+    }
+    
+    public List<Book> listBookByTitle() {
+      
+        for(int i = 0; i < listBook.size(); i++) {
+                
+            for (int j = 0; j < listBook.size() - 1; j++) {
+                                     
+                if(listBook.get(j).getBookTitle().trim().compareTo(listBook.get(j+1).getBookTitle().trim()) > 0) {
+                     
+                    Book tempTitle = listBook.get(j);
+                    listBook.set(j, listBook.get(j+1));
+                    listBook.set(j+1, tempTitle);                                          
+                }
+            }
+        }
+
+        System.out.println("*************LIST BOOKS BY BOOK'S TITLE ORDER*************");
         return listBook;
 
     }

@@ -89,7 +89,7 @@ public class Menu {
                         break;
 
                     case (3):
-                        //myCB.listBookTitle();
+                        System.out.println(myCB.listBookByTitle());
                         break;
 
                     case (4):
