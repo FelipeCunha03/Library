@@ -54,7 +54,8 @@ public class Menu {
                 System.out.println("** 10. Register a student has returned a book           **");
                 System.out.println("** 11. List all the books borrowed                      **");
                 System.out.println("** 12. List the books borrowed by a specific student    **");
-                System.out.println("** 13. Exit                                             **");
+                System.out.println("** 13. List the students waiting on the queue           **");
+                System.out.println("** 14. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
@@ -159,6 +160,16 @@ public class Menu {
                         break;
                         
                     case (13):
+                        myBW.listStudentsQueue();
+                        
+//                        if (studentQueue == null) {
+//                            System.out.println("There is no student waiting on the queue.\n");
+//                        }else{
+//                            System.out.println(studentQueue);
+//                        }                 
+                        break;
+                  
+                    case (14):
                         System.out.println("The programar is over!");
                         break;
 
