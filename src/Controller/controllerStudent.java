@@ -109,7 +109,7 @@ public class controllerStudent {
             if (idValid.matches("[0-9]+")) {
                 checkId = true;
             } else {
-                System.out.println("ID is just numbers! please type again: ");
+                System.out.println("Please, inform just numbers: ");
             }
 
         } while (checkId == false);
@@ -142,7 +142,7 @@ public class controllerStudent {
             }
         }
 
-        System.out.println("*************LIST STUDENTS BY NAME ORDER*************");
+        System.out.println("\n*************LIST STUDENTS BY NAME ORDER*************");
         return listStudent;
     }
 
@@ -159,7 +159,7 @@ public class controllerStudent {
                 }
             }
         }
-        System.out.println("*************LIST STUDENTS BY ID ORDER*************");
+        System.out.println("\n*************LIST STUDENTS BY ID ORDER*************");
         return listStudent;
     }
 

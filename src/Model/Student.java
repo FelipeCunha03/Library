@@ -101,7 +101,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "\n---------------Student's details ------------\n"
+        return "\n\n---------------Student's details ------------\n"
                 + "Id Student: " + idStudent
                 + "\nStudent's first name:" + fNameStudent
                 + "\nStudent's first name: " + lNameStudent
@@ -109,8 +109,8 @@ public class Student {
                 + "\nCity: " + city
                 + "\nPhone Number: " + phoneNumber
                 + "\nGender: " + gender
-                + "\nDate of Birth: " + DOB + "\n"
-                + "---------------------------------------------";
+                + "\nDate of Birth: " + DOB;
+                //+ "---------------------------------------------";
     }
 
 }

@@ -137,7 +137,7 @@ public class controllerBook {
             }
         }
 
-        System.out.println("*************LIST BOOKS BY AUTHOR ORDER*************");
+        System.out.println("\n*************LIST BOOKS BY AUTHOR ORDER*************");
         return listBook;
 
     }
@@ -157,7 +157,7 @@ public class controllerBook {
             }
         }
 
-        System.out.println("*************LIST BOOKS BY BOOK'S TITLE ORDER*************");
+        System.out.println("\n*************LIST BOOKS BY BOOK'S TITLE ORDER*************");
         return listBook;
 
     }

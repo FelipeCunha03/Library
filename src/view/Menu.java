@@ -27,7 +27,7 @@ public class Menu {
         controllerBook myCB = new controllerBook();
         controllerStudent myCS = new controllerStudent();
         controllerBorrowing myBW = new controllerBorrowing();
-        String bookDetails = "---------------Book's details --------------";
+        //String bookDetails = "---------------Book's details --------------";
         int option = 0;
 
         // calling the methot that will get the file data of books/students!
@@ -72,7 +72,7 @@ public class Menu {
 
                         } else {
 
-                            System.out.println(bookDetails);
+                            //System.out.println(bookDetails);
                             System.out.println(myBook);
                         }
                         break;
@@ -85,20 +85,20 @@ public class Menu {
                             System.out.println("Author was not found!");
 
                         } else {
-                            System.out.println(bookDetails);
+                            //System.out.println(bookDetails);
                             System.out.println(myBook);
                         }
                         break;
 
                     case (3):
 
-                        System.out.println(bookDetails);
+                        //System.out.println(bookDetails);
                         System.out.println(myCB.listBookByTitle());
                         break;
 
                     case (4):
 
-                        System.out.println(bookDetails);
+                        //System.out.println(bookDetails);
                         System.out.println(myCB.listBookByAuthor());
                         break;
 
@@ -144,7 +144,6 @@ public class Menu {
                             s.nextLine();
 
                         } else {
-                            System.out.println(" \nConfirmed the borrowing of the book to the student : ");
                             System.out.println(myBorrowing);
                         }
                         break;
@@ -158,10 +157,21 @@ public class Menu {
                         break;
 
                     case (12):
-
-                        System.out.println(myBW.listBookBorrowedByStudent());
+                        
+                        
+                        List<Book> teste = myBW.listBookBorrowedByStudent();
+                        
+                        if (teste == null) {
+                            System.out.println("This student has not borrowed any book.\n");
+                        }else{
+                            System.out.println(teste);
+                        }
+                        
+                            
+                        
                         break;
-
+                        
+                        //System.out.println(myBW.listBookBorrowedByStudent());
                     case (13):
                         System.out.println("The programar is over!");
                         break;

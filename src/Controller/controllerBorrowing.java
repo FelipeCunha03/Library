@@ -70,6 +70,7 @@ public class controllerBorrowing {
             //Borrowings borredByStudent = new Borrowings(myBook, myStudent);
             //listBorrowingByStudent.add(borredByStudent);
             //return the book borrowed
+            System.out.println(" \n***Confirmed the borrowing of the book to the student***\n");
             return myBorred;
 
             //if the book is not avaiable to be borrowed, ask the user about go to the queue
@@ -99,7 +100,7 @@ public class controllerBorrowing {
     }
 
     public List<Borrowings> listBookBorrowed() {
-        System.out.println("*************List of Books Borrowed*************");
+        System.out.println("\n*************LIST OF BOOKS BORROWED*************");
         return listBorrowing;
     }
 
@@ -107,20 +108,25 @@ public class controllerBorrowing {
 
         controllerStudent myCS = new controllerStudent();
         List<Book> listAux = new ArrayList();
-
+        int count = 0;
         myStudent = myCS.searchStudentByID();
 
         for (int i = 0; i < listBorrowing.size(); i++) {
             
             if (myStudent.getIdStudent() == listBorrowing.get(i).getMyStudent().getIdStudent()) {
-
                 listAux.add(listBorrowing.get(i).getMyBook());
+                count++;         
+            }else{
+                return null;
             }
         }
-
-        System.out.println("*************List of Books Borrowed by Student*************");
-
-        return listAux;
+        if (count == 0){
+            return null;
+        }else{
+            System.out.println("\n*************LIST OF BOOKS BORROWED BY STUDENT*************");
+            System.out.println("Student: " + myStudent.getfNameStudent() + " " + myStudent.getlNameStudent());
+            return listAux;
+        }
     }
 
 }
