@@ -42,19 +42,19 @@ public class Menu {
                 System.out.println("**********************************************************");
                 System.out.println("**  Choose one option:                                  **");
                 System.out.println("**                                                      **");
-                System.out.println("**  1. Search for a specific book by title;             **");
-                System.out.println("**  2. Search for a specific book by author;            **");
-                System.out.println("**  3. List all books by title;                         **");
-                System.out.println("**  4. List all books by author name                    **");
-                System.out.println("**  5. Search for a specific student by name;           **");
-                System.out.println("**  6. Search for a specific student by ID;             **");
-                System.out.println("**  7. List all students by name;                       **");
-                System.out.println("**  8. List all students by ID;                         **");
+                System.out.println("**  1. Search for a specific book by title              **");
+                System.out.println("**  2. Search for a specific book by author             **");
+                System.out.println("**  3. List all books by title                          **");
+                System.out.println("**  4. List all books by author's name                  **");
+                System.out.println("**  5. Search for a specific student by name            **");
+                System.out.println("**  6. Search for a specific student by ID              **");
+                System.out.println("**  7. List all students by name                        **");
+                System.out.println("**  8. List all students by ID                          **");
                 System.out.println("**  9. Register that a student has borrowed a book      **");
-                System.out.println("**  10. Register a student has returned a book;         **");
-                System.out.println("**  11. List all the book borrowed                      **");
-                System.out.println("**  12. List the books borrowed by a specific studen    **");
-                System.out.println("**  13. Exit                                            **");
+                System.out.println("** 10. Register a student has returned a book           **");
+                System.out.println("** 11. List all the books borrowed                      **");
+                System.out.println("** 12. List the books borrowed by a specific student    **");
+                System.out.println("** 13. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
@@ -64,65 +64,53 @@ public class Menu {
                 switch (option) {
 
                     case 1:
-
-                        Book myBook;
-                        myBook = myCB.searchBookByTitle();
+                        Book myBook = myCB.searchBookByTitle();
+                        
                         if (myBook == null) {
                             System.out.println("Book was not found!");
-
-                        } else {
-
+                        }else{
                             //System.out.println(bookDetails);
                             System.out.println(myBook);
                         }
                         break;
 
                     case (2):
-
                         myBook = myCB.searchBookByAuthor();
-
+                        
                         if (myBook == null) {
                             System.out.println("Author was not found!");
-
-                        } else {
+                        }else{
                             //System.out.println(bookDetails);
                             System.out.println(myBook);
                         }
                         break;
 
                     case (3):
-
                         //System.out.println(bookDetails);
                         System.out.println(myCB.listBookByTitle());
                         break;
 
                     case (4):
-
                         //System.out.println(bookDetails);
                         System.out.println(myCB.listBookByAuthor());
                         break;
 
                     case (5):
-
-                        Student myStudent;
-                        myStudent = myCS.searchStudentByName();
+                        Student myStudent = myCS.searchStudentByName();
 
                         if (myStudent == null) {
                             System.out.println("Student was not found!");
-
-                        } else {
+                        }else{
                             System.out.println(myStudent);
                         }
                         break;
 
                     case (6):
-
                         myStudent = myCS.searchStudentByID();
 
                         if (myStudent == null) {
                             System.out.println("ID was not found!");
-
-                        } else {
+                        }else{
                             System.out.println(myStudent);
                         }
                         break;
@@ -136,61 +124,52 @@ public class Menu {
                         break;
 
                     case (9):
-
-                        Borrowings myBorrowing;
-                        myBorrowing = myBW.borrowBook();
+                        Borrowings myBorrowing = myBW.borrowBook();
 
                         if (myBorrowing == null) {
                             s.nextLine();
-
-                        } else {
+                        }else{
                             System.out.println(myBorrowing);
                         }
                         break;
 
-                    case (10):
-                        myBW.returnBook();
-                        break;
+                    case (10):                       
+                        myBorrowing = myBW.returnBook();
+                        
+                        if (myBorrowing == null) {
+                            s.nextLine();
 
+                        }else{
+                            System.out.println(myBorrowing);
+                        }
+                        break;
+                        
                     case (11):
                         System.out.println(myBW.listBookBorrowed());
                         break;
 
-                    case (12):
+                    case (12):                       
+                        List<Book> booksByStudent = myBW.listBookBorrowedByStudent();
                         
-                        
-                        List<Book> teste = myBW.listBookBorrowedByStudent();
-                        
-                        if (teste == null) {
+                        if (booksByStudent == null) {
                             System.out.println("This student has not borrowed any book.\n");
                         }else{
-                            System.out.println(teste);
-                        }
-                        
-                            
-                        
+                            System.out.println(booksByStudent);
+                        }                 
                         break;
                         
-                        //System.out.println(myBW.listBookBorrowedByStudent());
                     case (13):
                         System.out.println("The programar is over!");
                         break;
 
                     default:
                         System.out.println("Please, choose an option between 1 and 12.");
-
                 }
-
+                
             } catch (Exception e) {
-
                 System.out.println("Sorry, something wrong has happened :( \nMessage error: " + e.getMessage());
-
                 s.nextLine();
-
             }
-
         } while (option != 13);
-
     }
-
 }

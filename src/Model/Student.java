@@ -101,10 +101,10 @@ public class Student {
 
     @Override
     public String toString() {
-        return "\n\n---------------Student's details ------------\n"
+        return "\n---------------Student's details ------------\n"
                 + "Id Student: " + idStudent
                 + "\nStudent's first name:" + fNameStudent
-                + "\nStudent's first name: " + lNameStudent
+                + "\nStudent's last name: " + lNameStudent
                 + "\nAddress: " + address
                 + "\nCity: " + city
                 + "\nPhone Number: " + phoneNumber

@@ -12,8 +12,10 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.Scanner;
 import javax.xml.crypto.Data;
 import javax.xml.transform.Source;
@@ -30,13 +32,16 @@ public class controllerBorrowing {
 
     static List<Borrowings> listBorrowingByStudent = new ArrayList();
     Student myStudent;
+    Book myBook;
+    Borrowings borredBook, myStudentQueue;
+    controllerBook myCB = new controllerBook();
+    LocalDateTime localTime;
+    String dataReturned, dataBorrowed;
+    Queue<Borrowings> myQ = new LinkedList<>(); 
+    
 
     public Borrowings borrowBook() {
-
-        Borrowings borredBook = null; //
-        Book myBook = null; //
-
-        controllerBook myCB = new controllerBook();
+       
         controllerStudent myCS = new controllerStudent();
 
         //call the method to search book by title
@@ -45,30 +50,33 @@ public class controllerBorrowing {
             System.out.println("Book was not found!");
             return null;
         }
+        //call the method to search student by ID
+        myStudent = myCS.searchStudentByID();
+        if (myStudent == null) {
+            System.out.println("Student was not found!");
+        return null;
+        }
+        
         //check if the book is avaiable to be borrowed
         if (myBook.isIsAvailable() == true) {
+                    
             myBook.setIsAvailable(false);
 
-            //call the method to search student by ID
-            myStudent = myCS.searchStudentByID();
-
             //save the data and time the book is borrowed
-            LocalDateTime localTime = LocalDateTime.now();
+            localTime = LocalDateTime.now();
             DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            String dataBorrowed = localTime.format(dataFormat);
+            dataBorrowed = localTime.format(dataFormat);
 
             //when the book is borrowed, there is no data returned
             LocalDateTime dReturned = null;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
             Optional<LocalDateTime> optionalDate = Optional.ofNullable(dReturned);
-            String dataReturned = optionalDate.map(formatter::format).orElse(" ");
+            dataReturned = optionalDate.map(formatter::format).orElse(" --- ");
 
             //save the book that was borrowed and send the information and include it to the borrowing's list
             Borrowings myBorred = new Borrowings(myBook, myStudent, dataBorrowed, dataReturned);
             listBorrowing.add(myBorred);
 
-            //Borrowings borredByStudent = new Borrowings(myBook, myStudent);
-            //listBorrowingByStudent.add(borredByStudent);
             //return the book borrowed
             System.out.println(" \n***Confirmed the borrowing of the book to the student***\n");
             return myBorred;
@@ -78,25 +86,51 @@ public class controllerBorrowing {
             System.out.println("Book is borrowed. Would you like to wait on the queue for the book? S/N");
             String answer = s.nextLine().toLowerCase();
 
-            if (answer.equals("s")) {
-                waitListQueue();
-
+            if (answer.equals("s")){  
+                myStudentQueue = new Borrowings(myBook, myStudent, dataBorrowed, dataReturned);
+                myQ.add(myStudentQueue);
+                     
+                System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent()+
+                        " " + myStudent.getlNameStudent()+ " is on the queue for the book " +
+                        myBook.getBookTitle() + "***\n");                            
             }
 
-            //if the book is borrowed and user doesn't want to wait on the queue, return null
+            //System.out.println("tamanho da fila: " +myQ.size());
+        
+        return null;           
+        } 
+
+    }
+
+//    public void waitingListQueue() {
+//
+//    }
+
+    public Borrowings returnBook() {
+        myBook = myCB.searchBookByTitle();
+        
+        if (myBook == null){
+            System.out.println("Book was not found!");
             return null;
-
         }
-
-    }
-
-    public void waitListQueue() {
-
-    }
-
-    public static void returnBook() {
-        System.out.println("Return book method");
-
+        
+        if (myBook.isIsAvailable()== false){
+            myBook.setIsAvailable(true);
+            
+            localTime = LocalDateTime.now();
+            DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");       
+            dataReturned = localTime.format(dataFormat);       
+            
+            System.out.println("\n***Book returned!***");
+            System.out.println("Returned date: " + dataReturned + "\n");
+            System.out.println("The next student waiting for this book is: " + myQ.peek().getMyStudent().getfNameStudent() +
+                                " " + myQ.peek().getMyStudent().getlNameStudent() + "\n");
+            
+        }else{
+            System.out.println("Book is not borrowed. You can borrow it using option 9.\n");
+        }
+        
+        return null;
     }
 
     public List<Borrowings> listBookBorrowed() {
