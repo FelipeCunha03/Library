@@ -5,6 +5,7 @@
 package Controller;
 
 import static Controller.controllerStudent.listStudent;
+import Model.AvailabilityBook;
 import Model.Book;
 import Model.Student;
 import java.io.BufferedReader;
@@ -27,6 +28,7 @@ public class controllerBook {
 
     static List<Book> listBook;
     Scanner s = new Scanner(System.in);
+    public boolean isAvailable;
 
     /**
      * The methods that will get the file of book put in list of set.
@@ -90,7 +92,6 @@ public class controllerBook {
 
                 return listBook.get(i);
             }
-
         }
         return null;
     }
@@ -162,4 +163,23 @@ public class controllerBook {
 
     }
 
+      static List<AvailabilityBook> listAvailableBook = new ArrayList();
+
+    public List<AvailabilityBook> generateAvailableBook() {
+
+        String idbook;
+
+        for (int i = 0; i < listBook.size(); i++) {
+
+            idbook = listBook.get(i).getIdBook();
+
+            AvailabilityBook myAvailable = new AvailabilityBook(idbook);
+            listAvailableBook.add(myAvailable);
+        }
+        return listAvailableBook;
+
+    }
+
 }
+
+  

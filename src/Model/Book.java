@@ -16,7 +16,7 @@ public class Book {
     private String lNameAuthor;
     private String bookTitle;
     private String genre;
-    private boolean isAvailable;
+  
 
     // Constructor
     public Book(String idBook, String fNameAuthor, String lNameAuthor, String bookTitle, String genre) {
@@ -25,7 +25,7 @@ public class Book {
         this.lNameAuthor = lNameAuthor;
         this.bookTitle = bookTitle;
         this.genre = genre;
-        this.isAvailable = true;
+       
     }
 
     public String getIdBook() {
@@ -68,14 +68,7 @@ public class Book {
         this.genre = genre;
     }
 
-    public boolean isIsAvailable() {
-        return isAvailable;
-    }
-
-    // methodos gets and setters
-    public void setIsAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
+   
 
     // methodos toString  for output the book as String.
     @Override
@@ -86,7 +79,7 @@ public class Book {
                 + "\nAuthor's last name: " + lNameAuthor
                 + "\nBook's title: " + bookTitle
                 + "\nGenre: " + genre
-                + "\nAvailable: " + isAvailable;
+                ;
                 //+ "--------------------------------------------";
     }
 

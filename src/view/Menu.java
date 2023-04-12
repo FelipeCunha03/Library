@@ -4,6 +4,7 @@
  */
 package view;
 
+import Controller.controllerAvailabilityBook;
 import Controller.controllerBorrowing;
 import Controller.controllerStudent;
 import Controller.controllerBook;
@@ -27,12 +28,16 @@ public class Menu {
         controllerBook myCB = new controllerBook();
         controllerStudent myCS = new controllerStudent();
         controllerBorrowing myBW = new controllerBorrowing();
+         controllerAvailabilityBook myCAB = new controllerAvailabilityBook();
         //String bookDetails = "---------------Book's details --------------";
         int option = 0;
 
-        // calling the methot that will get the file data of books/students!
+        // calling the methot that will get the file data of books/students/generateAvailableBook 
         myCB.getBookObj();
         myCS.getStudentObj();
+        myCB.generateAvailableBook();
+        myCAB.gererateAvailabilityBookFile();
+        
 
         do {
 
@@ -55,7 +60,8 @@ public class Menu {
                 System.out.println("** 11. List all the books borrowed                      **");
                 System.out.println("** 12. List the books borrowed by a specific student    **");
                 System.out.println("** 13. List the students waiting on the queue           **");
-                System.out.println("** 14. Exit                                             **");
+                System.out.println("** 14. Check book availability                          **");
+                System.out.println("** 15. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
@@ -66,33 +72,33 @@ public class Menu {
 
                     case 1:
                         Book myBook = myCB.searchBookByTitle();
-                        
+
                         if (myBook == null) {
                             System.out.println("Book was not found!");
-                        }else{
-                            //System.out.println(bookDetails);
+                        } else {
+
                             System.out.println(myBook);
                         }
                         break;
 
                     case (2):
                         myBook = myCB.searchBookByAuthor();
-                        
+
                         if (myBook == null) {
                             System.out.println("Author was not found!");
-                        }else{
-                            //System.out.println(bookDetails);
+                        } else {
+
                             System.out.println(myBook);
                         }
                         break;
 
                     case (3):
-                        //System.out.println(bookDetails);
+
                         System.out.println(myCB.listBookByTitle());
                         break;
 
                     case (4):
-                        //System.out.println(bookDetails);
+
                         System.out.println(myCB.listBookByAuthor());
                         break;
 
@@ -101,7 +107,7 @@ public class Menu {
 
                         if (myStudent == null) {
                             System.out.println("Student was not found!");
-                        }else{
+                        } else {
                             System.out.println(myStudent);
                         }
                         break;
@@ -111,7 +117,7 @@ public class Menu {
 
                         if (myStudent == null) {
                             System.out.println("ID was not found!");
-                        }else{
+                        } else {
                             System.out.println(myStudent);
                         }
                         break;
@@ -125,59 +131,70 @@ public class Menu {
                         break;
 
                     case (9):
+                        
                         Borrowings myBorrowing = myBW.borrowBook();
 
                         if (myBorrowing == null) {
                             s.nextLine();
-                        }else{
+                        } else {
                             System.out.println(myBorrowing);
                         }
                         break;
 
-                    case (10):                       
+                    case (10):
                         myBorrowing = myBW.returnBook();
-                        
+
                         if (myBorrowing == null) {
                             s.nextLine();
 
-                        }else{
+                        } else {
                             System.out.println(myBorrowing);
                         }
                         break;
-                        
+
                     case (11):
                         System.out.println(myBW.listBookBorrowed());
                         break;
 
-                    case (12):                       
+                    case (12):
                         List<Book> booksByStudent = myBW.listBookBorrowedByStudent();
-                        
+
                         if (booksByStudent == null) {
                             System.out.println("This student has not borrowed any book.\n");
-                        }else{
+                        } else {
                             System.out.println(booksByStudent);
-                        }                 
+                        }
                         break;
-                        
+
                     case (13):
                         myBW.listStudentsQueue();
-                        
+
 //                        if (studentQueue == null) {
 //                            System.out.println("There is no student waiting on the queue.\n");
 //                        }else{
 //                            System.out.println(studentQueue);
 //                        }                 
                         break;
-                  
+
                     case (14):
+                        
+                       
+                        boolean check = myCAB.checkBookAvailability(); 
+                        if( check == true){
+                            System.out.println("Book is available");
+                        }else{
+                            System.out.println("Book is borrowed");
+                        }
+
+                        break;
+                    case (15):
                         System.out.println("The programar is over!");
                         break;
 
                     default:
                         System.out.println("Please, choose an option between 1 and 12.");
                 }
-                  
-                
+
             } catch (Exception e) {
                 System.out.println("Sorry, something wrong has happened :( \nMessage error: " + e.getMessage());
                 s.nextLine();
