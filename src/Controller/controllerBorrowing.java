@@ -46,6 +46,7 @@ public class controllerBorrowing {
         //call the method to search book by title
         myBook = myCB.searchBookByTitle();
         if (myBook == null) {
+            //messageError("Book");
             System.out.println("Book was not found!");
             return null;
         }
@@ -193,7 +194,6 @@ public class controllerBorrowing {
             return listAux;
         }
     }
-    
     public void listStudentsQueue() {
         
         myBook = myCB.searchBookByTitle();
