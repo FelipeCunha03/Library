@@ -36,9 +36,8 @@ public class AvailabilityBook {
 
     @Override
     public String toString() {
-        return  "\n----------------- Book availability ---------------\n" +
-                "IdBook: " + idBook +
-                "\nAvailable: " + isAvailable + "\n";
+        return  "idBook, isAvaiable\n"
+                + idBook + "," + isAvailable + "\n";
     }
     
     

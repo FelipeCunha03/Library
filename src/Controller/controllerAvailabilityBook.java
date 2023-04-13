@@ -42,14 +42,8 @@ public class controllerAvailabilityBook {
         controllerBook myCB = new controllerBook();
 
         //call the method to search book by title
-        Book myBook = myCB.searchBookByTitle();
-        String message;
-
-        if (myBook == null) {
-            //messageError("Book");
-            System.out.println("Book was not found!");
-        }
-
+          Book myBook = myCB.searchBookByTitle();
+        
         for (int i = 0; i < controllerBook.listAvailableBook.size(); i++) {
 
             if (controllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {

@@ -242,9 +242,16 @@ public class controllerBorrowing {
        
     }
 
-    public void messageError(String myAtribute) {
+    public void messageError(String caseError) {
+        
+        
+                switch (caseError) {
 
-        System.out.println(myAtribute + "was not found.");
+                    case "Book":
+                         System.out.println("Book was not found!");
+                     break;
+                }
 
+          
     }
 }
