@@ -18,13 +18,13 @@ public class Borrowings {
     private Book myBook;
     private Student myStudent;
     private String dataBorrowing;
-    private String dataReturned=null;
+    private String dataReturned;
 
     public Borrowings(Book myBook, Student myStudent, String dataBorrowing, String dataReturned) {
         this.myBook = myBook;
         this.myStudent = myStudent;
         this.dataBorrowing = dataBorrowing;
-        this.dataReturned = null;
+        this.dataReturned = dataReturned;
     }
 
     public Book getMyBook() {
