@@ -21,7 +21,7 @@ import java.util.Scanner;
  * @author rapha
  */
 public class Menu {
-
+// teste
     public static void main(String[] args) throws IOException {
 
         Scanner s = new Scanner(System.in);
