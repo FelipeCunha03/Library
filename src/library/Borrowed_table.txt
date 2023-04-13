@@ -1,0 +1,21 @@
+
+-----------------Book's details---------------
+Id Book: 140a3d7e-a417-4c2b-96fe-32f9a2732693
+Author's first name: Kennan
+Author's last name: Stowers
+Book's title: test1
+Genre: Action|Adventure|Fantasy|Romance
+
+---------------Student's details ------------
+Id Student: 1
+Student's first name:Amanda
+Student's last name: Lor
+Address: 24 Old County Road
+City: Dublin
+Phone Number: 35383089634
+Gender: F
+Date of Birth: 3/20/1985
+Borrowed date: 13/04/2023 10:56:37
+--------------------------------------------
+Returned date:  --- 
+--------------------------------------------

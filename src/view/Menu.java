@@ -4,12 +4,12 @@
  */
 package view;
 
-import Controller.ControllerAvailabilityBook;
-import Controller.ControllerBorrow;
-import Controller.ControllerStudent;
-import Controller.ControllerBook;
+import Controller.controllerAvailabilityBook;
+import Controller.controllerBorrowing;
+import Controller.controllerStudent;
+import Controller.controllerBook;
 import Model.Book;
-import Model.Borrow;
+import Model.Borrowings;
 import Model.Student;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,10 +25,10 @@ public class Menu {
     public static void main(String[] args) throws IOException {
 
         Scanner s = new Scanner(System.in);
-        ControllerBook myCB = new ControllerBook();
-        ControllerStudent myCS = new ControllerStudent();
-        ControllerBorrow myBW = new ControllerBorrow();
-         ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
+        controllerBook myCB = new controllerBook();
+        controllerStudent myCS = new controllerStudent();
+        controllerBorrowing myBW = new controllerBorrowing();
+         controllerAvailabilityBook myCAB = new controllerAvailabilityBook();
         //String bookDetails = "---------------Book's details --------------";
         int option = 0;
 
@@ -132,7 +132,7 @@ public class Menu {
 
                     case (9):
                         
-                        Borrow myBorrowing = myBW.borrowBook();
+                        Borrowings myBorrowing = myBW.borrowBook();
 
                         if (myBorrowing == null) {
                             s.nextLine();
@@ -150,7 +150,7 @@ public class Menu {
                         break;
 
                     case (12):
-                        List<Book> booksByStudent = myBW.listBookBorrowByStudent();
+                        List<Book> booksByStudent = myBW.listBookBorrowedByStudent();
 
                         if (booksByStudent == null) {
                             System.out.println("This student has not borrowed any book.\n");

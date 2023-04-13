@@ -12,7 +12,7 @@ import java.io.FileWriter;
  *
  * @author felipecunha
  */
-public class ControllerAvailabilityBook {
+public class controllerAvailabilityBook {
 
     public void gererateAvailabilityBookFile() {
 
@@ -20,10 +20,10 @@ public class ControllerAvailabilityBook {
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/listAvailableBook_table.csv", false));
 
-            for (int i =0; i<ControllerBook.listAvailableBook.size(); i++) {
+            for (int i =0; i<controllerBook.listAvailableBook.size(); i++) {
 
                 //  write in the TXT the arralist in reverse ordem.
-                myWriter.write(ControllerBook.listAvailableBook.get(i) + "\n");
+                myWriter.write(controllerBook.listAvailableBook.get(i) + "\n");
 
             }
             myWriter.close();
@@ -39,16 +39,16 @@ public class ControllerAvailabilityBook {
 
     public boolean checkBookAvailability() {
 
-        ControllerBook myCB = new ControllerBook();
+        controllerBook myCB = new controllerBook();
 
         //call the method to search book by title
           Book myBook = myCB.searchBookByTitle();
         
-        for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
+        for (int i = 0; i < controllerBook.listAvailableBook.size(); i++) {
 
-            if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
+            if (controllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
 
-                if (ControllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
+                if (controllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
                     return  false;
                 }
             } 

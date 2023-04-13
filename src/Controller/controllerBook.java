@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import static Controller.ControllerStudent.listStudent;
+import static Controller.controllerStudent.listStudent;
 import Model.AvailabilityBook;
 import Model.Book;
 import Model.Student;
@@ -24,7 +24,7 @@ import javax.xml.transform.Source;
  *
  * @author felipecunha
  */
-public class ControllerBook {
+public class controllerBook {
 
     static List<Book> listBook;
     Scanner s = new Scanner(System.in);
