@@ -4,7 +4,7 @@
  IdStudent: 1
  FirstName: Amanda
  LastName: Lor
- DataBorrowing: 13/04/2023 21:53:12
+ DataBorrowing: 13/04/2023 22:18:22
  DataReturned:  --- 
 
 
@@ -13,24 +13,6 @@
  IdStudent: 2
  FirstName: Barbara
  LastName: Lonaker
- DataBorrowing: 13/04/2023 21:53:37
- DataReturned:  --- 
-
-
- idBook : ac6644b2-9da8-439d-8d43-b27418acbc1e
- TitleBook: test3
- IdStudent: 1
- FirstName: Amanda
- LastName: Lor
- DataBorrowing: 13/04/2023 21:55:19
- DataReturned:  --- 
-
-
- idBook : ac6644b2-9da8-439d-8d43-b27418acbc1e
- TitleBook: test4
- IdStudent: 4
- FirstName: Daniel
- LastName: Lor
- DataBorrowing: 13/04/2023 21:55:30
+ DataBorrowing: 13/04/2023 22:18:34
  DataReturned:  --- 
 
