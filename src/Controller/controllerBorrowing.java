@@ -224,7 +224,7 @@ public class controllerBorrowing {
         
         try {
             // try overwrite txt if something went wrong  will be have Exception
-            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrowed_table.txt", false));
+            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrowed_table.csv", false));
 
             for (int i =0; i<listBorrowing.size(); i++) {
 

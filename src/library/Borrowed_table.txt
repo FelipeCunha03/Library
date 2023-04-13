@@ -15,28 +15,7 @@ City: Dublin
 Phone Number: 35383089634
 Gender: F
 Date of Birth: 3/20/1985
-Borrowed date: 12/04/2023 23:02:26
+Borrowed date: 13/04/2023 10:56:37
 --------------------------------------------
-Returned date: null
---------------------------------------------
-
------------------Book's details---------------
-Id Book: b4eb8f48-2bbb-46bf-b836-017f9372c463
-Author's first name: Tripp
-Author's last name: Wiltshier
-Book's title: test2
-Genre: Drama|Horror|Mystery|Romance|Thriller
-
----------------Student's details ------------
-Id Student: 1
-Student's first name:Amanda
-Student's last name: Lor
-Address: 24 Old County Road
-City: Dublin
-Phone Number: 35383089634
-Gender: F
-Date of Birth: 3/20/1985
-Borrowed date: 12/04/2023 23:04:23
---------------------------------------------
-Returned date: null
+Returned date:  --- 
 --------------------------------------------
