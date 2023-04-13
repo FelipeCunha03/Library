@@ -142,14 +142,7 @@ public class Menu {
                         break;
 
                     case (10):
-                        myBorrowing = myBW.returnBook();
-
-                        if (myBorrowing == null) {
-                            s.nextLine();
-
-                        } else {
-                            System.out.println(myBorrowing);
-                        }
+                        myBW.returnBook();
                         break;
 
                     case (11):

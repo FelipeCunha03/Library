@@ -106,65 +106,67 @@ public class controllerBorrowing {
     }
 
     public void waitingListQueue() {
-
+        
+        String[] data;
+        int qSize = 0;
+        int front;
+        int back;
+        int capacity;
+    
         if (!myMap.containsKey(myBook)) {
+            
             myMap.put(myBook, new LinkedList<>());
             //System.out.println("FOI CRIADA A LISTA DO LIVRO: \n" + myBook);
         }
         myMap.get(myBook).add(myStudent);
         //System.out.println("FOI INSERIDO O ESTUDANTE\n " + myStudent + " NA FILA DO LIVRO \n " + myBook);
-
-        System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
-                + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
-
-        //System.out.println("my map: " + myMap);
-        //System.out.println("tamanho da fila: " + myMap.size());
-//        
-//        myStudent = myCS.searchStudentByID();
+        
+//        if(qSize >= capacity){
 //            
-//        if (myStudent == null) {
-//            System.out.println("Student was not found!");
-//            return null;
 //        }
-//        if (!myMap.containsKey(myBook)){             
-//            myMap.put(myBook, new LinkedList<>());      
+//        if(front == -1){
+//            front++;
 //        }
-//        myMap.get(myBook).add(myStudent);
-//        System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent()+ " " 
-//                + myStudent.getlNameStudent()+ " is on the queue for the book " + myBook.getBookTitle() + "***\n");                            
+//        back++;
+//        data[back]=newElement;
+//        qSize++;   
+
+       System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
+               + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
+//                    
     }
 
-     public Borrowings returnBook() {
+     public void returnBook() {
         myBook = myCB.searchBookByTitle();
-        controllerAvailabilityBook  myCAB = new controllerAvailabilityBook();
-        
-        if (myBook == null){
+        controllerAvailabilityBook myCAB = new controllerAvailabilityBook();
+
+        if (myBook == null) {
             System.out.println("Book was not found!");
-            return null;
-        }
-        
-            for(int i =0 ; i<controllerBook.listAvailableBook.size(); i++){
-                
-               if( controllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())){
-                   
-                   controllerBook.listAvailableBook.get(i).setIsAvailable(true);
-                    myCAB.gererateAvailabilityBookFile();
-               }
-               
+
+        } else {
+
+            for (int i = 0; i < controllerBook.listAvailableBook.size(); i++) {
+
+                if (controllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
+                    
+                    if (controllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
+
+                        controllerBook.listAvailableBook.get(i).setIsAvailable(true);
+                        myCAB.gererateAvailabilityBookFile();
+
+                        localTime = LocalDateTime.now();
+                        DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                        dataReturned = localTime.format(dataFormat);
+
+                         System.out.println("\n*Book returned!*");
+                         System.out.println("Returned date: " + dataReturned + "\n");
+                    }else{
+                        System.out.println("Book is not borrowed!");
+                    }
+                }
             }
-      
-            localTime = LocalDateTime.now();
-            DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");       
-            dataReturned = localTime.format(dataFormat);  
-            
-            
-            System.out.println("\n***Book returned!***");
-            System.out.println("Returned date: " + dataReturned + "\n");
-            System.out.println("The next student waiting for this book is: " + myMap.get(myBook).element().getfNameStudent()
-                                + " " + myMap.get(myBook).element().getlNameStudent());
-            
-        
-        return null;
+        }
+
     }
      
      
