@@ -23,7 +23,7 @@ import java.util.Set;
  *
  * @author rapha
  */
-public class controllerStudent {
+public class ControllerStudent {
 
     Scanner s = new Scanner(System.in);
     static List<Student> listStudent;

@@ -4,9 +4,9 @@
  */
 package Controller;
 
-import static Controller.controllerStudent.listStudent;
+import static Controller.ControllerStudent.listStudent;
 import Model.Book;
-import Model.Borrowings;
+import Model.Borrow;
 import Model.Student;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -28,21 +28,30 @@ import javax.xml.transform.Source;
  *
  * @author rapha
  */
-public class controllerBorrowing {
+public class ControllerBorrow {
 
     Scanner s = new Scanner(System.in);
 
-    List<Borrowings> listBorrowing = new ArrayList();
+    List<Borrow> ListBorrowed = new ArrayList();
+    static List<Borrow> ListBookByStudent = new ArrayList();
     Student myStudent;
     Book myBook;
-    Borrowings borredBook;
-    controllerBook myCB = new controllerBook();
-    controllerStudent myCS = new controllerStudent();
+    Borrow borredBook;
+    ControllerBook myCB = new ControllerBook();
+    ControllerStudent myCS = new ControllerStudent();
     LocalDateTime localTime;
     String dataReturned, dataBorrowed;
     Map<Book, Queue<Student>> myMap = new HashMap<>();
 
-    public Borrowings borrowBook() {
+    public Borrow borrowBook() {
+                
+        //call the method to search book by title
+        myBook = myCB.searchBookByTitle();
+        if (myBook == null) {
+            System.out.println("Book was not found!");
+            return null;
+        }
+        
         
         //call the method to search student by ID
         myStudent = myCS.searchStudentByID();
@@ -50,24 +59,16 @@ public class controllerBorrowing {
             System.out.println("Student was not found!");
             return null;
         }
-
-        //call the method to search book by title
-        myBook = myCB.searchBookByTitle();
-        if (myBook == null) {
-            //messageError("Book");
-            System.out.println("Book was not found!");
-            return null;
-        }
-      
+          
         //check if the book is avaiable to be borrowed
-        for (int i = 0; i < controllerBook.listAvailableBook.size(); i++) {
+        for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
 
-            if (controllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())
-                    && controllerBook.listAvailableBook.get(i).isIsAvailable() == true) {
+            if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())
+                    && ControllerBook.listAvailableBook.get(i).isIsAvailable() == true) {
                 
-                 controllerBook.listAvailableBook.get(i).setIsAvailable(false);
+                 ControllerBook.listAvailableBook.get(i).setIsAvailable(false);
                  
-                 controllerAvailabilityBook myCAB = new controllerAvailabilityBook();
+                 ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
                  myCAB.gererateAvailabilityBookFile(); // call the methodo that overwrite the file AvailabilityBookFile that show the status of book.
                 
                 localTime = LocalDateTime.now();
@@ -81,9 +82,14 @@ public class controllerBorrowing {
                 dataReturned = optionalDate.map(formatter::format).orElse(" --- ");
 
                 //save the book that was borrowed and send the information and include it to the borrowing's list
-                Borrowings myBorred = new Borrowings(myBook, myStudent, dataBorrowed, dataReturned);
-                listBorrowing.add(myBorred);
+                Borrow myBorred = new Borrow(myBook.getIdBook(),myBook.getBookTitle(),myStudent.getIdStudent(),
+                        myStudent.getfNameStudent(),myStudent.getlNameStudent(),dataBorrowed, dataReturned);
+                
+                ListBorrowed.add(myBorred);
                 storageListBorrowedFile();
+                
+                Borrow myBorredByStudent = new  Borrow( myStudent.getIdStudent(),myBook);
+                ListBookByStudent.add(myBorredByStudent);
 
                 //return the book borrowed
                 System.out.println(" \n***Confirmed the borrowing of the book to the student***\n");
@@ -138,20 +144,20 @@ public class controllerBorrowing {
 
      public void returnBook() {
         myBook = myCB.searchBookByTitle();
-        controllerAvailabilityBook myCAB = new controllerAvailabilityBook();
+        ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
 
         if (myBook == null) {
             System.out.println("Book was not found!");
 
         } else {
 
-            for (int i = 0; i < controllerBook.listAvailableBook.size(); i++) {
+            for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
 
-                if (controllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
+                if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
                     
-                    if (controllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
+                    if (ControllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
 
-                        controllerBook.listAvailableBook.get(i).setIsAvailable(true);
+                        ControllerBook.listAvailableBook.get(i).setIsAvailable(true);
                         myCAB.gererateAvailabilityBookFile();
 
                         localTime = LocalDateTime.now();
@@ -170,34 +176,29 @@ public class controllerBorrowing {
     }
      
      
-    public List<Borrowings> listBookBorrowed() {
-        System.out.println("\n*************LIST OF BOOKS BORROWED*************");
-        return listBorrowing;
+    public List<Borrow> listBookBorrowed() {
+        System.out.println("\n*************LIST OF BOOKS BORROWED*************************");
+        return ListBorrowed;
     }
 
-    public List<Book> listBookBorrowedByStudent() {
+    public List<Book> listBookBorrowByStudent() {
 
-        controllerStudent myCS = new controllerStudent();
+        ControllerStudent myCS = new ControllerStudent();
         List<Book> listAux = new ArrayList();
-        int count = 0;
         myStudent = myCS.searchStudentByID();
 
-        for (int i = 0; i < listBorrowing.size(); i++) {
+        for (int i = 0; i < ListBookByStudent.size(); i++) {
 
-            if (myStudent.getIdStudent() == listBorrowing.get(i).getMyStudent().getIdStudent()) {
-                listAux.add(listBorrowing.get(i).getMyBook());
-                count++;
-            } else {
-                return null;
+            if (myStudent.getIdStudent() == ListBookByStudent.get(i).getIdStudent()) {
+                listAux.add(ListBookByStudent.get(i).getMyBook());
             }
         }
-        if (count == 0) {
-            return null;
-        } else {
-            System.out.println("\n*************LIST OF BOOKS BORROWED BY STUDENT*************");
-            System.out.println("Student: " + myStudent.getfNameStudent() + " " + myStudent.getlNameStudent());
+        
+            System.out.println("*************LIST OF BOOKS BORROWED BY STUDENT***************");
+            System.out.println("\nStudent: " + myStudent.getfNameStudent() + " " + myStudent.getlNameStudent());
+            System.out.println("\n***************   Book's details   ************************");
             return listAux;
-        }
+        
     }
 
     public void listStudentsQueue() {
@@ -226,12 +227,12 @@ public class controllerBorrowing {
         
         try {
             // try overwrite txt if something went wrong  will be have Exception
-            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrowed_table.csv", false));
+            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv", false));
 
-            for (int i =0; i<listBorrowing.size(); i++) {
+            for (int i =0; i<ListBorrowed.size(); i++) {
 
                 //  write in the TXT the arralist in reverse ordem.
-                myWriter.write(listBorrowing.get(i) + "\n");
+                myWriter.write(ListBorrowed.get(i) + "\n");
 
             }
             myWriter.close();
