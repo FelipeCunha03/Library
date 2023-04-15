@@ -12,7 +12,6 @@ import Model.Book;
 import Model.Borrow;
 import Model.Student;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,8 +35,7 @@ public class Menu {
         myCB.getBookObj();
         myCS.getStudentObj();
         myCB.generateAvailableBook();
-        myCAB.gererateAvailabilityBookFile();
-        
+        myCAB.gererateAvailabilityBookFile();    
 
         do {
 
@@ -143,6 +141,7 @@ public class Menu {
 
                     case (10):
                         myBW.returnBook();
+                                
                         break;
 
                     case (11):
@@ -160,12 +159,12 @@ public class Menu {
                         break;
 
                     case (13):
-                        myBW.listStudentsQueue();
-
-//                        if (studentQueue == null) {
-//                            System.out.println("There is no student waiting on the queue.\n");
+                        //myBW.listStudentsQueue();
+//                        boolean meuretorno = false;
+//                        if (meuretorno == false) {
+//                            System.out.println("NAO TEM ESTUDANTE.\n");
 //                        }else{
-//                            System.out.println(studentQueue);
+//                            System.out.println("retorno true");
 //                        }                 
                         break;
 

@@ -2,13 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package Controller;
 
 import Controller.ControlerQueue;
 import Model.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.LinkedList;
 
 /**
@@ -32,7 +31,7 @@ public class CustomizedQueue<T> implements ControlerQueue {
         this.last = -1;
         this.capacity = capacity;
 
-    }
+    }    
 
     @Override
     public boolean AddStudentQueue(int id) {
@@ -51,7 +50,7 @@ public class CustomizedQueue<T> implements ControlerQueue {
     }
 
     @Override
-    public int RemoveStudentQueue() {
+    public int RemoveStudentQueue(int id) {
 
         int idReturn;
         if (queueSize == 0) {
@@ -87,7 +86,7 @@ public class CustomizedQueue<T> implements ControlerQueue {
     }
 
     @Override
-    public int size() {
+    public int sizeOfQueue() {
         return queueSize;
 
     }

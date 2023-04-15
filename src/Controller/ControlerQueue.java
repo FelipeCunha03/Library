@@ -21,9 +21,10 @@ public interface ControlerQueue {
     /**
      * Removes an element from the front of the queue
      *
+     * @param idStudent
      * @return the idStudent of queue that is removing.
      */
-    public int RemoveStudentQueue();
+    public int RemoveStudentQueue(int idStudent);
 
     /**
      * First element of the queue without removing it
@@ -44,7 +45,7 @@ public interface ControlerQueue {
      *
      * @return size of studentQueue.
      */
-    public int size();
+    public int sizeOfQueue();
 
     /**
      * True if there is no elements in the Student Queue

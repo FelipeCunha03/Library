@@ -109,13 +109,14 @@ public class Borrow {
 
     @Override
     public String toString() {
-        return "\n idBook : " + idBook
-                + "\n TitleBook: " + titleBook 
-                + "\n IdStudent: " + idStudent 
-                + "\n FirstName: " + StudentFirstName
-                + "\n LastName: " + StudentLastName 
-                + "\n DataBorrowing: " + dataBorrowing
-                + "\n DataReturned: " + dataReturned + "\n";
+        return "----------------Borrow's Details--------------"
+                + "\n Id Book: " + idBook
+                +"\n Book's title: " + titleBook 
+                + "\n Id Student: " + idStudent 
+                + "\n Student's First Name: " + StudentFirstName
+                + "\n Student's Last Name: " + StudentLastName 
+                + "\n Data Borrowing: " + dataBorrowing
+                + "\n Data Returned: " + dataReturned + "\n";
     }
 
     
