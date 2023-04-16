@@ -4,21 +4,17 @@
  */
 package Controller;
 
-import static Controller.ControllerStudent.listStudent;
 import Model.AvailabilityBook;
 import Model.Book;
-import Model.Student;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-import javax.xml.transform.Source;
 
 /**
  *

@@ -12,7 +12,7 @@ import java.util.List;
  * @author felipecunha
  */
 public class Student {
-    //teste commmit
+    
     private int idStudent;
     private String fNameStudent;
     private String lNameStudent;
@@ -110,7 +110,5 @@ public class Student {
                 + "\nPhone Number: " + phoneNumber
                 + "\nGender: " + gender
                 + "\nDate of Birth: " + DOB;
-                //+ "---------------------------------------------";
     }
-
 }

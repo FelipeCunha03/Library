@@ -16,7 +16,7 @@ public class ControllerAvailabilityBook {
 
     public void gererateAvailabilityBookFile() {
 
-        try {
+        try{
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/listAvailableBook_table.csv", false));
 
@@ -28,13 +28,10 @@ public class ControllerAvailabilityBook {
             }
             myWriter.close();
 
-        } catch (Exception e) {
+        }catch (Exception e){
 
-            System.out.println("ERROR WRITE ON THE TXT! ");
-
+            System.out.println("Error writing on txt! ");
         }
-       
-
     }
 
     public boolean checkBookAvailability() {
@@ -55,5 +52,4 @@ public class ControllerAvailabilityBook {
         }
         return true;
     }
-
 }

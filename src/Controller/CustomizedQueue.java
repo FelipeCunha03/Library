@@ -4,12 +4,6 @@
  */
 package Controller;
 
-import Controller.ControlerQueue;
-import Model.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.LinkedList;
-
 /**
  *
  * @author felipecunha
@@ -60,7 +54,6 @@ public class CustomizedQueue<T> implements ControlerQueue {
         // idStudent[first] = 0;
         first++;
         queueSize--;
-
         return idReturn;
 
     }

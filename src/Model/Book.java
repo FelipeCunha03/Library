@@ -68,8 +68,6 @@ public class Book {
         this.genre = genre;
     }
 
-   
-
     // methodos toString  for output the book as String.
     @Override
     public String toString() {
@@ -78,9 +76,6 @@ public class Book {
                 + "\nAuthor's first name: " + fNameAuthor
                 + "\nAuthor's last name: " + lNameAuthor
                 + "\nBook's title: " + bookTitle
-                + "\nGenre: " + genre + "\n"
-                ;
-                //+ "--------------------------------------------";
+                + "\nGenre: " + genre + "\n";
     }
-
 }

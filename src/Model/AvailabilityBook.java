@@ -38,12 +38,5 @@ public class AvailabilityBook {
     public String toString() {
         return  "idBook, isAvaiable\n"
                 + idBook + "," + isAvailable + "\n";
-    }
-    
-    
-    
-    
-    
-    
-    
+    }    
 }

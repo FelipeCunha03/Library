@@ -4,6 +4,33 @@
  Id Student: 1
  Student's First Name: Amanda
  Student's Last Name: Lor
- Data Borrowing: 15/04/2023 20:31:50
+ Data Borrowing: 16/04/2023 15:21:18
+ Data Returned:  --- 
+
+----------------Borrow's Details--------------
+ Id Book: b4eb8f48-2bbb-46bf-b836-017f9372c463
+ Book's title: test2
+ Id Student: 3
+ Student's First Name: Camila
+ Student's Last Name: Lonaker
+ Data Borrowing: 16/04/2023 15:23:00
+ Data Returned:  --- 
+
+----------------Borrow's Details--------------
+ Id Book: 140a3d7e-a417-4c2b-96fe-32f9a2732693
+ Book's title: test1
+ Id Student: 2
+ Student's First Name: Barbara
+ Student's Last Name: Lonaker
+ Data Borrowing: 16/04/2023 15:23:14
+ Data Returned:  --- 
+
+----------------Borrow's Details--------------
+ Id Book: 140a3d7e-a417-4c2b-96fe-32f9a2732693
+ Book's title: test1
+ Id Student: 3
+ Student's First Name: Camila
+ Student's Last Name: Lonaker
+ Data Borrowing: 16/04/2023 15:23:52
  Data Returned:  --- 
 

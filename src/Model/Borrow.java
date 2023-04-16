@@ -14,9 +14,6 @@ import java.time.format.DateTimeFormatter;
  */
 public class Borrow {
 
-    //private int idborrowing;
-  
-   
     private String idBook;
     private String titleBook;
     private int idStudent;
@@ -118,8 +115,4 @@ public class Borrow {
                 + "\n Data Borrowing: " + dataBorrowing
                 + "\n Data Returned: " + dataReturned + "\n";
     }
-
-    
-    
-
 }
