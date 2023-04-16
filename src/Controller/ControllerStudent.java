@@ -38,12 +38,12 @@ public class ControllerStudent {
 
         String line = br.readLine(); // Now read the second line and passing to String
 
-        try {
-
-            while (line != null) {
+        try{
+            
+            while(line != null){
 
                 String[] vetStudent = line.split(",");
-                Integer idS = Integer.parseInt(vetStudent[0]);
+                int idS = Integer.parseInt(vetStudent[0]);
                 String firstNameS = vetStudent[1];
                 String lastNameS = vetStudent[2];
                 String address = vetStudent[3];
@@ -54,24 +54,16 @@ public class ControllerStudent {
                 String DOB = vetStudent[7];
 
                 Student studentObj = new Student(idS, firstNameS, lastNameS, address, city, phoneNumber, charGender, DOB);
-
                 myStudentSet.add(studentObj);
-
                 line = br.readLine();
-
             }
-
-        } catch (Exception e) {
-
+        }catch(Exception e){
             System.out.println("Error to open file\nMessage error: " + e.getMessage());
         }
 
         listStudent = new ArrayList<>(myStudentSet);
-
         return listStudent;
     }
-    
-    
 
     public Student searchStudentByName() {
 
@@ -83,11 +75,10 @@ public class ControllerStudent {
             fNameStudent = studentName.substring(0, studentName.indexOf(" "));
             lNameStudent = studentName.substring(studentName.indexOf(" ") + 1);
 
-        } else {
+        }else{
             System.out.println("Inform the student's full name.");
             return null;
         }
-
         for (int i = 0; i < listStudent.size(); i++) {
 
             if ((listStudent.get(i).getfNameStudent().equals(fNameStudent))
@@ -105,18 +96,18 @@ public class ControllerStudent {
         String idValid = null; // It was created as String because I wanted to used the regex for to valid the ID 
         //and make sure the user type just number!
 
-        do {
+        do{
 
             System.out.println("Informe the student's ID: ");
             idValid = s.nextLine();
 
             if (idValid.matches("[0-9]+")) {
                 checkId = true;
-            } else {
+            }else{
                 System.out.println("Please, inform just numbers: ");
             }
 
-        } while (checkId == false);
+        }while(checkId == false);
 
         int studentID = Integer.parseInt(idValid); // convert to the ID to INT because the atribute IDstudent is int 
         //and It not possible compare String vs int in the nexr for.
@@ -131,9 +122,9 @@ public class ControllerStudent {
         return null;
     }
 
-    public List<Student> listStudentByName() {
+    public void listStudentByName() {
 
-        for (int i = 0; i < listStudent.size(); i++) {
+        for(int i = 0; i < listStudent.size(); i++){
 
             for (int j = 0; j < listStudent.size() - 1; j++) {
 
@@ -145,15 +136,14 @@ public class ControllerStudent {
                 }
             }
         }
-
         System.out.println("\n*************LIST STUDENTS BY NAME ORDER*************");
-        return listStudent;
+        System.out.println(listStudent);
     }
 
-    public List<Student> listStudentByID() {
+    public void listStudentByID() {
 
         Student temp;
-        for (int i = 0; i < listStudent.size(); i++) {
+        for(int i = 0; i < listStudent.size(); i++){
 
             for (int j = 0; j < listStudent.size() - 1; j++) {
                 if (listStudent.get(j).getIdStudent() > listStudent.get(j + 1).getIdStudent()) {
@@ -164,7 +154,7 @@ public class ControllerStudent {
             }
         }
         System.out.println("\n*************LIST STUDENTS BY ID ORDER*************");
-        return listStudent;
+        System.out.println(listStudent);
     }
 
 }

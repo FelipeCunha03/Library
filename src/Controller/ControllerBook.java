@@ -45,10 +45,10 @@ public class ControllerBook {
         String line = br.readLine();
 
         //We had put all processe for get the book from data  for treatement some exeception if will have some erroe ao open the file.  
-        try {
+        try{
 
             // Start read the file books.The Loop will try get line by line still the next line will be NULL.
-            while (line != null) {
+            while(line != null){
 
                 // Created Array of String   for get  each information from file CSV.
                 String[] vetBook = line.split(",");
@@ -59,20 +59,14 @@ public class ControllerBook {
                 String genre = vetBook[4];
 
                 Book bookObj = new Book(idBook, firstNameA, lastNameA, title, genre);
-
                 myBookSet.add(bookObj);
-
                 line = br.readLine(); //read the next line of file csv.
-
             }
-
-        } catch (Exception e) {
-
+        }catch(Exception e){
             System.out.println("Error open file\nMessage error: " + e.getMessage());
         }
 
         listBook = new ArrayList<>(myBookSet);// to convert setList of book to arrayList,I think It's easier to use List for maniputation.
-
         return listBook;
 
     }
@@ -119,7 +113,7 @@ public class ControllerBook {
         return null;
     }
 
-    public List<Book> listBookByAuthor() {
+    public void listBookByAuthor() {
 
         for (int i = 0; i < listBook.size(); i++) {
 
@@ -133,13 +127,11 @@ public class ControllerBook {
                 }
             }
         }
-
-        System.out.println("\n*************LIST BOOKS BY AUTHOR ORDER*************");
-        return listBook;
-
+        System.out.println("\n*************LIST BOOKS BY AUTHOR ORDER*************\n");
+        System.out.println(listBook);
     }
 
-    public List<Book> listBookByTitle() {
+    public void listBookByTitle() {
 
         for (int i = 0; i < listBook.size(); i++) {
 
@@ -153,10 +145,8 @@ public class ControllerBook {
                 }
             }
         }
-
-        System.out.println("\n*************LIST BOOKS BY BOOK'S TITLE ORDER*************");
-        return listBook;
-
+        System.out.println("\n*************LIST BOOKS BY BOOK'S TITLE ORDER*************\n");
+        System.out.println(listBook);
     }
 
       static List<AvailabilityBook> listAvailableBook = new ArrayList();

@@ -28,7 +28,7 @@ public class ControllerBorrow {
 
     Scanner s = new Scanner(System.in);
 
-    List<Borrow> ListBorrowed = new ArrayList();
+    List<Borrow> listBorrowed = new ArrayList();
     static List<Borrow> ListBookByStudent = new ArrayList();
     Student myStudent;
     Book myBook;
@@ -47,14 +47,14 @@ public class ControllerBorrow {
         //call the method to search book by title
         myBook = myCB.searchBookByTitle();
         if (myBook == null) {
-            System.out.println("Book was not found!");
+            messageError("Book");
             return null;
         }
       
         //call the method to search student by ID
         myStudent = myCS.searchStudentByID();
         if (myStudent == null) {
-            System.out.println("Student was not found!");
+            messageError("Student");
             return null;
         }
           
@@ -101,7 +101,7 @@ public class ControllerBorrow {
                 Borrow myBorred = new Borrow(myBook.getIdBook(),myBook.getBookTitle(),myStudent.getIdStudent(),
                     myStudent.getfNameStudent(),myStudent.getlNameStudent(),dataBorrowed, dataReturned);
 
-                ListBorrowed.add(myBorred);
+                listBorrowed.add(myBorred);
                 storageListBorrowedFile();
 
                 Borrow myBorredByStudent = new  Borrow( myStudent.getIdStudent(),myBook);
@@ -143,8 +143,7 @@ public class ControllerBorrow {
         ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
 
         if(myBook == null) {
-            System.out.println("Book was not found!");
-
+            messageError("Book");
         }else{
 
             for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
@@ -186,9 +185,13 @@ public class ControllerBorrow {
     }
      
      
-    public List<Borrow> listBookBorrowed() {
-        System.out.println("\n*************LIST OF BOOKS BORROWED*************************");
-        return ListBorrowed;
+    public void listBookBorrowed() {
+        if (listBorrowed.isEmpty() == true){
+            System.out.println("There are no borrowed books.");
+        }else{
+            System.out.println("\n*************LIST ALL BOOKS BORROWED*************************\n");
+            System.out.println(listBorrowed);
+        }
     }
 
     public List<Book> listBookBorrowByStudent() {
@@ -217,15 +220,19 @@ public class ControllerBorrow {
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv", false));
 
-            for (int i =0; i<ListBorrowed.size(); i++) {
+            for (int i =0; i<listBorrowed.size(); i++) {
 
                 //  write in the TXT the arralist in reverse ordem.
-                myWriter.write(ListBorrowed.get(i) + "\n");
+                myWriter.write(listBorrowed.get(i) + "\n");
             }
             myWriter.close();
 
         }catch(Exception e) {
             System.out.println("Error writing on txt! ");
         }     
+    }
+    
+    public void messageError(String objError){      
+        System.out.println(objError +" was not found!");
     }
 }
