@@ -40,7 +40,7 @@ public class Menu {
         myCB.generateAvailableBook();
         myCAB.gererateAvailabilityBookFile();    
 
-        do {
+        do{
 
             try{
                 System.out.println("**********************************************************");
@@ -58,17 +58,16 @@ public class Menu {
                 System.out.println("**  8. List all students by ID                          **");
                 System.out.println("**  9. Register that a student has borrowed a book      **");
                 System.out.println("** 10. Register a student has returned a book           **");
-                System.out.println("** 11. List all the books borrowed                      **");
-                System.out.println("** 12. List the books borrowed by a specific student    **");
-                System.out.println("** 13. Check book availability                          **");
-                System.out.println("** 14. Exit                                             **");
+                System.out.println("** 11. List the books borrowed by a specific student    **");
+                System.out.println("** 12. Check book availability                          **");
+                System.out.println("** 13. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
 
                 option = s.nextInt();
                 
-                switch (option){
+                switch(option){
                     
                     case (1):
                         myBook = myCB.searchBookByTitle();
@@ -136,14 +135,10 @@ public class Menu {
                         break;
 
                     case (11):
-                        myBW.listBookBorrowed();
-                        break;
-
-                    case (12):
                         myBW.listBookBorrowByStudent();
                         break;
 
-                    case (13):                      
+                    case (12):                      
                         boolean check = myCAB.checkBookAvailability(); 
                         if(check == true){
                             System.out.println("This book is available.");
@@ -152,18 +147,18 @@ public class Menu {
                         }
                         break;
                         
-                    case (14):
+                    case (13):
                         System.out.println("The programar is over!");
                         break;
 
                     default:
-                        System.out.println("Please, choose an option between 1 and 12.");
+                        System.out.println("Please, choose an option between 1 and 13.");
                 }
                 
             }catch (Exception e) {
-                System.out.println("Please, choose an option between 1 and 12. \nMessage error: " + e.getMessage());
+                System.out.println("Please, choose an option between 1 and 13. \nMessage error: " + e.getMessage());
                 s.nextLine();
             }
-        }while (option != 14);
+        }while (option != 13);
     }
 }

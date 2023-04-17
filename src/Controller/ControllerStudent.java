@@ -122,19 +122,19 @@ public class ControllerStudent {
 
     public void listStudentByName() {
 
-        for(int i = 0; i < listStudent.size(); i++){
+        for(int i = 0; i < listStudent.size(); i++){ //go through the list of students
 
-            for (int j = 0; j < listStudent.size() - 1; j++) {
-                               
+            for(int j = 0; j < listStudent.size() - 1; j++){ //check which element in the list to swap until the
+                                                             //size-1 because the last position will be in the correct position after all the sorting                   
                 if ((listStudent.get(j).getfNameStudent().compareTo(listStudent.get(j + 1).getfNameStudent()) > 0)||
                         (listStudent.get(j).getfNameStudent().compareTo(listStudent.get(j + 1).getfNameStudent()) == 0)
                         && (listStudent.get(j).getlNameStudent().compareTo(listStudent.get(j + 1).getlNameStudent()) > 0)) {
-
-                    Student tempStudent = listStudent.get(j);
-                    listStudent.set(j, listStudent.get(j + 1));
-                    listStudent.set(j + 1, tempStudent);
+                        //if the name in second position(j+1) is bigger than name in the first position(j) do the sorting
+                    Student tempStudent = listStudent.get(j);   //save the name in first position in a temporary variable
+                    listStudent.set(j, listStudent.get(j + 1)); //get the name in second position and put in first position
+                    listStudent.set(j + 1, tempStudent);        //get the first name saved in temporary and put in the second position
                 }
-            }
+            }   //if it's not big, do nothing, keep the position
         }
         System.out.println("\n*************LIST STUDENTS BY NAME ORDER*************");
         System.out.println(listStudent);

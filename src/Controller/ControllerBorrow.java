@@ -58,31 +58,32 @@ public class ControllerBorrow {
             return null;
         }
           
-        //check if the book is available to be borrowed
+        
         for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++){
             
+            //check if the book is available to be borrowed
             if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())
-                    && ControllerBook.listAvailableBook.get(i).isIsAvailable() == true) {
-                
-                //check if the map is not empty     
-                if (myMap.get(myBook) != null){ 
+                    && ControllerBook.listAvailableBook.get(i).isIsAvailable() == true) {        
+                                 
+                if (myMap.get(myBook) != null){ //if the book is available, check if the map is not empty 
+                    
                     //if the student who wants borrow the book is the first of the queue waiting, remove this student of the queue and let him borrow it
                     if (myStudent.getIdStudent() == myMap.get(myBook).getFirstStudentOfQueue()){
                         myMap.get(myBook).RemoveStudentQueue(myStudent.getIdStudent());
                         
-                    }else{//if not, don't let the student borrow the book and show a message with the name of the first on the queue
+                    }else{//if not, show a message with the name of the first on the queue
                         
-                        for (int j=0; j < listStudent.size(); j++){//for to return the name of the student 
+                        for (int j=0; j < listStudent.size(); j++){//for to return the name of the first student waiting on the queue
                             
                             if (listStudent.get(j).getIdStudent()== myMap.get(myBook).getFirstStudentOfQueue()){                               
                                 System.out.println("The book is not available to you yet because the first student of the queue is: " + listStudent.get(j).getfNameStudent() + " " + listStudent.get(j).getlNameStudent()+ " - id student: "
                                                     + myMap.get(myBook).getFirstStudentOfQueue()+ ".");
-                                //return null;
+                                return null; //return null to don't let the student borrow 
                             }
                         }
                     }              
                 }               
-                ControllerBook.listAvailableBook.get(i).setIsAvailable(false);
+                ControllerBook.listAvailableBook.get(i).setIsAvailable(false); //set false when the book is borrowed
 
                 ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
                 myCAB.gererateAvailabilityBookFile(); // call the methodo that overwrite the file AvailabilityBookFile that show the status of book.
@@ -90,12 +91,11 @@ public class ControllerBorrow {
                 localTime = LocalDateTime.now();
                 DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                 dataBorrowed = localTime.format(dataFormat);  //save the data and time the book is borrowed
-
-                //when the book is borrowed, there is no data returned
+       
                 LocalDateTime dReturned = null;
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                 Optional<LocalDateTime> optionalDate = Optional.ofNullable(dReturned);
-                dataReturned = optionalDate.map(formatter::format).orElse(" --- ");
+                dataReturned = optionalDate.map(formatter::format).orElse(" --- "); //when the book is borrowed, there is no data returned
 
                 //save the book that was borrowed and send the information and include it to the borrowing's list
                 Borrow myBorred = new Borrow(myBook.getIdBook(),myBook.getBookTitle(),myStudent.getIdStudent(),
@@ -107,9 +107,8 @@ public class ControllerBorrow {
                 Borrow myBorredByStudent = new  Borrow( myStudent.getIdStudent(),myBook);
                 ListBookByStudent.add(myBorredByStudent);
 
-                //return the book borrowed
                 System.out.println(" \n***Confirmed the borrowing of the book to the student***\n");
-                return myBorred;
+                return myBorred; //return the book borrowed
 
             }
         }                 
@@ -118,47 +117,50 @@ public class ControllerBorrow {
                 String answer = s.nextLine().toLowerCase();
 
                 if (answer.equals("s")) {
-                    waitingListQueue();
+                    waitingQueue(); //if the student wants go to the queue, call the method waitingQueue
                 }
         return null;
     }
 
-    public void waitingListQueue() {
+    public void waitingQueue() {
          
-        if (!myMap.containsKey(myBook)) {             
+        if(!myMap.containsKey(myBook)){   //if in the map doesn't exist the book, insert the book in the map and a queue of students          
             myMap.put(myBook, myQueue);          
         }
-        boolean myReturn = myMap.get(myBook).AddStudentQueue(myStudent.getIdStudent());
+        //call the method to add student on the queue
+        boolean myReturn = myMap.get(myBook).AddStudentQueue(myStudent.getIdStudent()); 
        
-        if (myReturn == true){
+        if (myReturn == true){ //if the method returns true, the student was add on the queue for that book
 
-                System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
-                       + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
+            System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
+                + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
                 
-            }        
+        }else{
+            System.out.println("The student was not add on the queue, because it is full.");
+        }        
     }
 
      public void returnBook() {
          
-        myBook = myCB.searchBookByTitle();
+        myBook = myCB.searchBookByTitle(); //ask to the user which book he wants to return
         ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
 
-        if(myBook == null) {
+        if(myBook == null) { //book was not found
             messageError("Book");
         }else{
 
-            for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
+            for(int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
 
-                if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
+                if(ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())){
                     
-                    if (ControllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
+                    if(ControllerBook.listAvailableBook.get(i).isIsAvailable() == false){ //check if the book is borrowed
 
-                        ControllerBook.listAvailableBook.get(i).setIsAvailable(true);
-                        myCAB.gererateAvailabilityBookFile();
+                        ControllerBook.listAvailableBook.get(i).setIsAvailable(true); //set the book to available
+                        myCAB.gererateAvailabilityBookFile(); //call the method to create the file
 
                         localTime = LocalDateTime.now();
                         DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-                        dataReturned = localTime.format(dataFormat);
+                        dataReturned = localTime.format(dataFormat); //includes data returned
 
                         System.out.println("\n*Book returned!*");
                         System.out.println("Returned date: " + dataReturned + "\n");
@@ -167,9 +169,9 @@ public class ControllerBorrow {
                         System.out.println("Book is not borrowed!");        
                     }
                     
-                    if (myMap.get(myBook) == null){
+                    if (myMap.get(myBook) == null){ //check if the queue for the book is empty
                         System.out.println("There is no student waiting on the queue.");
-                    }else{    
+                    }else{    // if the queue is not empty, shows the first student waiting on the queue
                                            
                         for (int j=0; j < listStudent.size(); j++){
                             
@@ -185,15 +187,6 @@ public class ControllerBorrow {
         }
     }
          
-    public void listBookBorrowed() {
-        if (listBorrowed.isEmpty() == true){
-            System.out.println("There are no borrowed books.");
-        }else{
-            System.out.println("\n*************LIST ALL BOOKS BORROWED*************************\n");
-            System.out.println(listBorrowed);
-        }
-    }
-
     public void listBookBorrowByStudent() {
 
         ControllerStudent myCS = new ControllerStudent();
