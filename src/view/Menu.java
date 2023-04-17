@@ -140,12 +140,7 @@ public class Menu {
                         break;
 
                     case (12):
-                        List<Book> booksByStudent = myBW.listBookBorrowByStudent();
-                        if (booksByStudent == null){
-                            System.out.println("This student has not borrowed any book.\n");
-                        }else{
-                            System.out.println(booksByStudent);
-                        }
+                        myBW.listBookBorrowByStudent();
                         break;
 
                     case (13):                      

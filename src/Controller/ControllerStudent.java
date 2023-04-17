@@ -71,7 +71,7 @@ public class ControllerStudent {
         System.out.println("Inform the student's name: ");
         String studentName = s.nextLine();
 
-        if (studentName.contains(" ")) {
+        if(studentName.contains(" ")){
             fNameStudent = studentName.substring(0, studentName.indexOf(" "));
             lNameStudent = studentName.substring(studentName.indexOf(" ") + 1);
 
@@ -97,11 +97,10 @@ public class ControllerStudent {
         //and make sure the user type just number!
 
         do{
-
             System.out.println("Informe the student's ID: ");
             idValid = s.nextLine();
 
-            if (idValid.matches("[0-9]+")) {
+            if(idValid.matches("[0-9]+")){
                 checkId = true;
             }else{
                 System.out.println("Please, inform just numbers: ");
@@ -112,11 +111,10 @@ public class ControllerStudent {
         int studentID = Integer.parseInt(idValid); // convert to the ID to INT because the atribute IDstudent is int 
         //and It not possible compare String vs int in the nexr for.
 
-        for (int i = 0; i < listStudent.size(); i++) {
+        for(int i = 0; i < listStudent.size(); i++){
 
             if (listStudent.get(i).getIdStudent() == studentID) {
                 return listStudent.get(i);
-
             }
         }
         return null;
@@ -127,8 +125,10 @@ public class ControllerStudent {
         for(int i = 0; i < listStudent.size(); i++){
 
             for (int j = 0; j < listStudent.size() - 1; j++) {
-
-                if (listStudent.get(j).getfNameStudent().trim().compareTo(listStudent.get(j + 1).getfNameStudent().trim()) > 0) {
+                               
+                if ((listStudent.get(j).getfNameStudent().compareTo(listStudent.get(j + 1).getfNameStudent()) > 0)||
+                        (listStudent.get(j).getfNameStudent().compareTo(listStudent.get(j + 1).getfNameStudent()) == 0)
+                        && (listStudent.get(j).getlNameStudent().compareTo(listStudent.get(j + 1).getlNameStudent()) > 0)) {
 
                     Student tempStudent = listStudent.get(j);
                     listStudent.set(j, listStudent.get(j + 1));
@@ -156,5 +156,4 @@ public class ControllerStudent {
         System.out.println("\n*************LIST STUDENTS BY ID ORDER*************");
         System.out.println(listStudent);
     }
-
 }

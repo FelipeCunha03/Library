@@ -103,8 +103,7 @@ public class Student {
     public String toString() {
         return "\n---------------Student's details ------------\n"
                 + "Id Student: " + idStudent
-                + "\nStudent's first name:" + fNameStudent
-                + "\nStudent's last name: " + lNameStudent
+                + "\nStudent's name: " + fNameStudent + " " + lNameStudent
                 + "\nAddress: " + address
                 + "\nCity: " + city
                 + "\nPhone Number: " + phoneNumber

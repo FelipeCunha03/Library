@@ -73,8 +73,7 @@ public class Book {
     public String toString() {
         return 
                 "\nId Book: " + idBook
-                + "\nAuthor's first name: " + fNameAuthor
-                + "\nAuthor's last name: " + lNameAuthor
+                + "\nAuthor's name: " + fNameAuthor + " " + lNameAuthor
                 + "\nBook's title: " + bookTitle
                 + "\nGenre: " + genre + "\n";
     }

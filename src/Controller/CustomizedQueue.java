@@ -24,17 +24,16 @@ public class CustomizedQueue<T> implements ControlerQueue {
         this.first = -1;
         this.last = -1;
         this.capacity = capacity;
-
     }    
 
     @Override
     public boolean AddStudentQueue(int id) {
 
-        if (queueSize >= capacity) {
+        if(queueSize >= capacity) {
             return false;
         }
 
-        if (first == -1) {
+        if(first == -1){
             first++;
         }
         last++;
@@ -47,7 +46,7 @@ public class CustomizedQueue<T> implements ControlerQueue {
     public int RemoveStudentQueue(int id) {
 
         int idReturn;
-        if (queueSize == 0) {
+        if(queueSize == 0){
             return -1;
         }
         idReturn = idStudent[first];
@@ -55,33 +54,29 @@ public class CustomizedQueue<T> implements ControlerQueue {
         first++;
         queueSize--;
         return idReturn;
-
     }
 
     @Override
     public int getFirstStudentOfQueue() {
 
-        if (queueSize == 0) {
+        if(queueSize == 0){
             return -1;
         }
         return idStudent[first];
-
     }
 
     @Override
     public int getLastStudentOfQueue() {
 
-        if (queueSize == 0) {
+        if(queueSize == 0){
             return -1;
         }
         return idStudent[last];
-
     }
 
     @Override
     public int sizeOfQueue() {
         return queueSize;
-
     }
 
     @Override
@@ -92,10 +87,8 @@ public class CustomizedQueue<T> implements ControlerQueue {
         } else {
             return false;
         }
-
     }
     public String toString() {
         return "CustomizedQueue{" + "idStudent=" + idStudent + ", queueSize=" + queueSize + ", first=" + first + ", last=" + last + ", capacity=" + capacity + '}';
     }
-
 }

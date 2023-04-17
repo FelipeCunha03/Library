@@ -110,8 +110,7 @@ public class Borrow {
                 + "\n Id Book: " + idBook
                 +"\n Book's title: " + titleBook 
                 + "\n Id Student: " + idStudent 
-                + "\n Student's First Name: " + StudentFirstName
-                + "\n Student's Last Name: " + StudentLastName 
+                + "\n Student's Name: " + StudentFirstName + " " + StudentLastName 
                 + "\n Data Borrowing: " + dataBorrowing
                 + "\n Data Returned: " + dataReturned + "\n";
     }

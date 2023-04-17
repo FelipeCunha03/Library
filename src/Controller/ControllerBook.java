@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import static Controller.ControllerStudent.listStudent;
 import Model.AvailabilityBook;
 import Model.Book;
 import java.io.BufferedReader;
@@ -119,7 +120,9 @@ public class ControllerBook {
 
             for (int j = 0; j < listBook.size() - 1; j++) {
 
-                if (listBook.get(j).getfNameAuthor().trim().compareTo(listBook.get(j + 1).getfNameAuthor().trim()) > 0) {
+                if ((listBook.get(j).getfNameAuthor().trim().compareTo(listBook.get(j + 1).getfNameAuthor().trim()) > 0)||
+                        (listBook.get(j).getfNameAuthor().compareTo(listBook.get(j+1).getfNameAuthor()) == 0) &&
+                        (listBook.get(j).getlNameAuthor().compareTo(listBook.get(j+1).getlNameAuthor()) > 0)){
 
                     Book tempAuthor = listBook.get(j);
                     listBook.set(j, listBook.get(j + 1));
@@ -149,7 +152,7 @@ public class ControllerBook {
         System.out.println(listBook);
     }
 
-      static List<AvailabilityBook> listAvailableBook = new ArrayList();
+    static List<AvailabilityBook> listAvailableBook = new ArrayList();
 
     public List<AvailabilityBook> generateAvailableBook() {
 
@@ -163,9 +166,7 @@ public class ControllerBook {
             listAvailableBook.add(myAvailable);
         }
         return listAvailableBook;
-
     }
-
 }
 
   

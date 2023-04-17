@@ -77,7 +77,7 @@ public class ControllerBorrow {
                             if (listStudent.get(j).getIdStudent()== myMap.get(myBook).getFirstStudentOfQueue()){                               
                                 System.out.println("The book is not available to you yet because the first student of the queue is: " + listStudent.get(j).getfNameStudent() + " " + listStudent.get(j).getlNameStudent()+ " - id student: "
                                                     + myMap.get(myBook).getFirstStudentOfQueue()+ ".");
-                                return null;
+                                //return null;
                             }
                         }
                     }              
@@ -134,6 +134,7 @@ public class ControllerBorrow {
 
                 System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
                        + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
+                
             }        
     }
 
@@ -183,8 +184,7 @@ public class ControllerBorrow {
             }
         }
     }
-     
-     
+         
     public void listBookBorrowed() {
         if (listBorrowed.isEmpty() == true){
             System.out.println("There are no borrowed books.");
@@ -194,7 +194,7 @@ public class ControllerBorrow {
         }
     }
 
-    public List<Book> listBookBorrowByStudent() {
+    public void listBookBorrowByStudent() {
 
         ControllerStudent myCS = new ControllerStudent();
         List<Book> listAux = new ArrayList();
@@ -209,8 +209,7 @@ public class ControllerBorrow {
         System.out.println("*************LIST OF BOOKS BORROWED BY STUDENT***************");
         System.out.println("\nStudent: " + myStudent.getfNameStudent() + " " + myStudent.getlNameStudent());
         System.out.println("\n***************   Book's details   ************************");
-        return listAux;
-        
+        System.out.println(listAux);        
     }
  
     // storge the list borrred in  file txt.
