@@ -28,7 +28,7 @@ public class ControllerBorrow {
 
     Scanner s = new Scanner(System.in);
 
-    List<Borrow> listBorrowed = new ArrayList();
+     public static List<Borrow> listBorrowed = new ArrayList();
     static List<Borrow> ListBookByStudent = new ArrayList();
     Student myStudent;
     Book myBook;
@@ -134,6 +134,7 @@ public class ControllerBorrow {
 
             System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
                 + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
+            storageQueueFile();
                 
         }else{
             System.out.println("The student was not add on the queue, because it is full.");
@@ -227,4 +228,49 @@ public class ControllerBorrow {
     public void messageError(String objError){      
         System.out.println(objError +" was not found!");
     }
+    
+    
+    public void listStudentsQueue() {
+
+        myBook = myCB.searchBookByTitle();
+        
+
+        if (!myMap.containsKey(myBook)) {
+            System.out.println("No students are waiting for " + myBook.getBookTitle());
+
+        } else {
+            
+            int[] studentQueue = myMap.get(myBook).listQueue();
+
+            System.out.println("\n**LIST OF STUDENTS WAITING ON THE QUEUE FOR A SPECIFIC BOOK**");
+
+            for (int i = 0; i < myMap.get(myBook).sizeOfQueue(); i++) {
+
+                System.out.println(studentQueue[i]);
+
+            }
+        }
+    }
+    
+    
+    // storge the list borrred in  file txt.
+    public  void storageQueueFile(){
+        
+        try {
+            // try overwrite txt if something went wrong  will be have Exception
+            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Queue_table.csv", false));
+
+            for (int i =0; i<myMap.get(myBook).sizeOfQueue(); i++) {
+
+                //  write in the TXT the arralist in reverse ordem.
+                myWriter.write(myMap.get(myBook) + "\n");
+            }
+            myWriter.close();
+
+        }catch(Exception e) {
+            System.out.println("Error writing on txt! ");
+        }     
+    }
+
+    
 }

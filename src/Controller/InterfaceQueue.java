@@ -8,7 +8,7 @@ package Controller;
  *
  * @author felipecunha
  */
-public interface ControlerQueue {
+public interface InterfaceQueue {
     
     /**
      * Adds an element at the back of the queue
@@ -53,6 +53,14 @@ public interface ControlerQueue {
      * @return true is StudentQueue is empty.
      */
     public boolean isEmpty();
+    
+    /**
+     * 
+     *
+     * @return the queue of student by Book..
+     */
+    
+    public int[] listQueue();
       
    
 }
