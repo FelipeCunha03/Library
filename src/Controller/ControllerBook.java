@@ -48,6 +48,7 @@ public class ControllerBook {
         //We had put all processe for get the book from data  for treatement some exeception if will have some erroe ao open the file.  
         try{
 
+             
             // Start read the file books.The Loop will try get line by line still the next line will be NULL.
             while(line != null){
 
@@ -58,9 +59,9 @@ public class ControllerBook {
                 String lastNameA = vetBook[2];
                 String title = vetBook[3];
                 String genre = vetBook[4];
-                title.toLowerCase();
+                
 
-                Book bookObj = new Book(idBook, firstNameA, lastNameA, title, genre);
+                Book bookObj = new Book(idBook, firstNameA.toLowerCase(),lastNameA.toLowerCase(), title.toLowerCase(), genre);
                 myBookSet.add(bookObj);
                 line = br.readLine(); //read the next line of file csv.
             }
@@ -76,7 +77,7 @@ public class ControllerBook {
     public Book searchBookByTitle() {
 
         System.out.println("Inform the book's title: ");
-        String bookTitle = s.nextLine().trim();
+        String bookTitle = s.nextLine().trim().toLowerCase();
 
         for (int i = 0; i < listBook.size(); i++) {
 

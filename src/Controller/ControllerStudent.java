@@ -53,7 +53,7 @@ public class ControllerStudent {
                 char charGender = gender.charAt(0);
                 String DOB = vetStudent[7];
 
-                Student studentObj = new Student(idS, firstNameS, lastNameS, address, city, phoneNumber, charGender, DOB);
+                Student studentObj = new Student(idS, firstNameS.toLowerCase(), lastNameS.toLowerCase(), address, city, phoneNumber, charGender, DOB);
                 myStudentSet.add(studentObj);
                 line = br.readLine();
             }
