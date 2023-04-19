@@ -229,31 +229,44 @@ public class ControllerBorrow {
     }
     
     
-    public void listStudentsQueue() {
+    public void queueStudentByBook() {
 
         myBook = myCB.searchBookByTitle();
-        
+
         if (!myMap.containsKey(myBook)) {
             System.out.println("No students are waiting for " + myBook.getBookTitle());
 
-        }else{
-            
+        } else {
+
             int[] studentQueue = myMap.get(myBook).listQueue();
 
-            System.out.println("\n**LIST OF STUDENTS WAITING ON THE QUEUE FOR THE BOOK: " + myBook.getBookTitle() + "**\n");
-                        
-            for (int i = 0; i < myMap.get(myBook).sizeOfQueue(); i++) {
-                for (int j = 0; j < listStudent.size(); j++) {
-                
-                    if (studentQueue[i] == listStudent.get(j).getIdStudent()){
+            System.out.println("\n**LIST OF STUDENTS WAITING ON THE QUEUE FOR A SPECIFIC BOOK**");
 
-                        System.out.println("Id Student: " + studentQueue[i] + " - Name Student: " + listStudent.get(i).getfNameStudent()
-                        + " " + listStudent.get(i).getfNameStudent());
-                    }
-                }
+            for (int i = 0; i < myMap.get(myBook).sizeOfQueue(); i++) {
+
+                System.out.println(studentQueue[i]);
+
             }
         }
     }
+    
+    
+    public void listBookAreBorred(){
+        
+        
+           System.out.println("List of books are borrowed");
+        for (int i = 0 ; i<ControllerBook.listAvailableBook.size(); i++){
+            
+            if( ControllerBook.listAvailableBook.get(i).getIdBook() == ControllerBook.listBook.get(i).getIdBook()
+                    && ControllerBook.listAvailableBook.get(i).isIsAvailable()== false){
+                
+                   System.out.println(ControllerBook.listBook.get(i));
+                }
+                
+            }
+        
+            
+        }
     
     
     // storge the list borrred in  file txt.

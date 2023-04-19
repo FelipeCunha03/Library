@@ -69,7 +69,7 @@ public class ControllerStudent {
 
         String fNameStudent, lNameStudent;
         System.out.println("Inform the student's name: ");
-        String studentName = s.nextLine();
+        String studentName = s.nextLine().toLowerCase();
 
         if(studentName.contains(" ")){
             fNameStudent = studentName.substring(0, studentName.indexOf(" "));

@@ -58,6 +58,7 @@ public class ControllerBook {
                 String lastNameA = vetBook[2];
                 String title = vetBook[3];
                 String genre = vetBook[4];
+                title.toLowerCase();
 
                 Book bookObj = new Book(idBook, firstNameA, lastNameA, title, genre);
                 myBookSet.add(bookObj);
@@ -91,7 +92,7 @@ public class ControllerBook {
 
         String fNameAuthor, lNameAuthor;
         System.out.println("Inform the name book's author : ");
-        String nameAuthor = s.nextLine().trim();
+        String nameAuthor = s.nextLine().trim().toLowerCase();
 
         if (nameAuthor.contains(" ")) {
             fNameAuthor = nameAuthor.substring(0, nameAuthor.indexOf(" "));

@@ -60,9 +60,10 @@ public class Menu {
                 System.out.println("** 10. Register a student has returned a book           **");
                 System.out.println("** 11. List the books borrowed by a specific student    **");
                 System.out.println("** 12. Check book availability                          **");
-                System.out.println("** 13. List all the books tha was borrowed              **");
-                System.out.println("** 14. List the Queue by Book                           **");
-                System.out.println("** 14. Exit                                             **");
+                System.out.println("** 13. List all the books that was borrowed              **");
+                System.out.println("** 14. List all the books that are borrowed              **");
+                System.out.println("** 15. List the Queue by Book                           **");
+                System.out.println("** 16. Exit                                             **");
                 System.out.println("**********************************************************");
                 System.out.println("**********************************************************");
                 System.out.println("===> Enter with the option: ");
@@ -154,7 +155,11 @@ public class Menu {
                         break;
                         
                     case (14):
-                        myBW.listStudentsQueue();
+                         myBW.listBookAreBorred();
+                        break;
+                        
+                    case (15):
+                        myBW.queueStudentByBook();
                         break;
 
                     default:
@@ -165,6 +170,6 @@ public class Menu {
                 System.out.println("Please, choose an option between 1 and 13. \nMessage error: " + e.getMessage());
                 s.nextLine();
             }
-        }while (option != 15);
+        }while (option != 16);
     }
 }

@@ -62,7 +62,7 @@ public interface InterfaceQueue {
     
     public int[] listQueue();
       
-   
+  
 }
 
     
