@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 
-
 /**
  *
  * @author rapha
@@ -234,20 +233,24 @@ public class ControllerBorrow {
 
         myBook = myCB.searchBookByTitle();
         
-
         if (!myMap.containsKey(myBook)) {
             System.out.println("No students are waiting for " + myBook.getBookTitle());
 
-        } else {
+        }else{
             
             int[] studentQueue = myMap.get(myBook).listQueue();
 
-            System.out.println("\n**LIST OF STUDENTS WAITING ON THE QUEUE FOR A SPECIFIC BOOK**");
-
+            System.out.println("\n**LIST OF STUDENTS WAITING ON THE QUEUE FOR THE BOOK: " + myBook.getBookTitle() + "**\n");
+                        
             for (int i = 0; i < myMap.get(myBook).sizeOfQueue(); i++) {
+                for (int j = 0; j < listStudent.size(); j++) {
+                
+                    if (studentQueue[i] == listStudent.get(j).getIdStudent()){
 
-                System.out.println(studentQueue[i]);
-
+                        System.out.println("Id Student: " + studentQueue[i] + " - Name Student: " + listStudent.get(i).getfNameStudent()
+                        + " " + listStudent.get(i).getfNameStudent());
+                    }
+                }
             }
         }
     }
