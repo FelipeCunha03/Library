@@ -13,10 +13,15 @@ public class AvailabilityBook {
     private String idBook;
     private boolean isAvailable ;
 
+  
+
     public AvailabilityBook(String idBook) {
         this.idBook = idBook;
         this.isAvailable = true;
     }
+
+    
+    
 
     public String getIdBook() {
         return idBook;
@@ -36,7 +41,9 @@ public class AvailabilityBook {
 
     @Override
     public String toString() {
-        return  "idBook, isAvaiable\n"
-                + idBook + "," + isAvailable + "\n";
-    }    
+        return  
+                " \n Id Book: " + idBook + ", isAvailable: " + isAvailable + "\n";
+    }
+
+     
 }

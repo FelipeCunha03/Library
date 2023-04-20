@@ -4,12 +4,18 @@
  */
 package Controller;
 
+import static Controller.ControllerBook.listBook;
 import static Controller.ControllerStudent.listStudent;
 import Model.Book;
 import Model.Borrow;
 import Model.Student;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -37,8 +43,9 @@ public class ControllerBorrow {
     String dataReturned, dataBorrowed;
     Map<Book, CustomizedQueue<Integer>> myMap = new HashMap<>();
     CustomizedQueue<Integer> myQueue;
+     ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
 
-    public Borrow borrowBook() {
+    public Borrow borrowBook() throws IOException {
 
         myQueue = new CustomizedQueue(100);
 
@@ -56,11 +63,11 @@ public class ControllerBorrow {
             return null;
         }
 
-        for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
+        for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
 
             //check if the book is available to be borrowed
-            if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())
-                    && ControllerBook.listAvailableBook.get(i).isIsAvailable() == true) {
+            if (ControllerAvailabilityBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())
+                    && ControllerAvailabilityBook.listAvailableBook.get(i).isIsAvailable() == true) {
 
                 if (myMap.get(myBook) != null) { //if the book is available, check if the map is not empty 
 
@@ -80,10 +87,8 @@ public class ControllerBorrow {
                         }
                     }
                 }
-                ControllerBook.listAvailableBook.get(i).setIsAvailable(false); //set false when the book is borrowed
-
-                ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
-                myCAB.gererateAvailabilityBookFile(); // call the methodo that overwrite the file AvailabilityBookFile that show the status of book.
+                ControllerAvailabilityBook.listAvailableBook.get(i).setIsAvailable(false); //set false when the book is borrowed
+                // myCAB.loadAvailabilityBookFileUpdated();// call the methot that update the Availability of BOOK.
 
                 localTime = LocalDateTime.now();
                 DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -131,14 +136,13 @@ public class ControllerBorrow {
 
             System.out.println("\n***Confirmed! The student " + myStudent.getfNameStudent() + " "
                     + myStudent.getlNameStudent() + " is on the queue for the book " + myBook.getBookTitle() + "***\n");
-           
 
         } else {
             System.out.println("The student was not add on the queue, because it is full.");
         }
     }
 
-    public void returnBook() {
+    public void returnBook() throws IOException {
 
         myBook = myCB.searchBookByTitle(); //ask to the user which book he wants to return
         ControllerAvailabilityBook myCAB = new ControllerAvailabilityBook();
@@ -147,14 +151,14 @@ public class ControllerBorrow {
             messageError("Book");
         } else {
 
-            for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
+            for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
 
-                if (ControllerBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
+                if (ControllerAvailabilityBook.listAvailableBook.get(i).getIdBook().equals(myBook.getIdBook())) {
 
-                    if (ControllerBook.listAvailableBook.get(i).isIsAvailable() == false) { //check if the book is borrowed
+                    if (ControllerAvailabilityBook.listAvailableBook.get(i).isIsAvailable() == false) { //check if the book is borrowed
 
-                        ControllerBook.listAvailableBook.get(i).setIsAvailable(true); //set the book to available
-                        myCAB.gererateAvailabilityBookFile(); //call the method to create the file
+                        ControllerAvailabilityBook.listAvailableBook.get(i).setIsAvailable(true); //set the book to available
+                       // myCAB.loadAvailabilityBookFileUpdated(); //call the methot that update the file about Availability 
 
                         localTime = LocalDateTime.now();
                         DateTimeFormatter dataFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
@@ -202,18 +206,63 @@ public class ControllerBorrow {
         System.out.println("\n***************   Book's details   ************************");
         System.out.println(listAux);
     }
+    
+    
+    
+    public  void createdTableBorrow(){
+        
+         try {
+            // try  to creat the txt and put just with the header if something went wrong I have catch.
+            BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv"));
+            myWriter.write("Id Book " + "," + " Id Student " + "," + "Date of Borrow " + "," + "Date Return ");
+            myWriter.close();
+
+
+        } catch (Exception e) { // if something went wrong when system try to  create CSV treat Exception
+
+            System.out.println("Erro ao create ");
+
+        }
+    }
+    
+    public boolean  checkBorrowTable(){
+        
+        boolean check;
+        File borrowTable = new File("src/library/Borrow_table.csv");
+        
+        if ( borrowTable.length() == 0 )
+            check = true;
+        else {
+            check = false;
+        }
+     return check;
+    }
 
     // storge the list borrred in  file txt.
     public void storageListBorrowedFile() {
+        
+        String idBook;
+        String idStudent;
+        String dataBorrowing;
+        String dataReturned;
 
         try {
             // try overwrite txt if something went wrong  will be have Exception
             BufferedWriter myWriter = new BufferedWriter(new FileWriter("src/library/Borrow_table.csv", false));
 
+            myWriter.write("Id Book " + "," + " Id Student " + "," + "Date of Borrow " + "," + "Date Return ");
+            myWriter.newLine();
+
             for (int i = 0; i < listBorrowed.size(); i++) {
 
-                //  write in the TXT the arralist in reverse ordem.
-                myWriter.write(listBorrowed.get(i) + "\n");
+                idBook = listBorrowed.get(i).getIdBook();
+                idStudent = Integer.toString(listBorrowed.get(i).getIdStudent());
+                dataBorrowing = listBorrowed.get(i).getDataBorrowing();
+                dataReturned = listBorrowed.get(i).getDataReturned();
+                myWriter.write(idBook + "," + idStudent + "," + dataBorrowing + "," + dataReturned);
+                myWriter.newLine();
+
+          
             }
             myWriter.close();
 
@@ -222,9 +271,48 @@ public class ControllerBorrow {
         }
     }
 
+    
+    
+    
+     public void loadListBorrowedFileUpdated() throws FileNotFoundException, IOException {
+         
+        String idBook;
+        int idStudent;
+        String dataBorrowing;
+        String dataReturned;
+         
+        String path = "src/library/Borrow_table.csv"; //path of data It is.
+
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        br.readLine();
+
+        String line = br.readLine();
+
+        try{
+   
+            // Start read the file books.The Loop will try get line by line still the next line will be NULL.
+            while(line != null){
+
+                // Created Array of String   for get  each information from file CSV.
+                String[] vetBorrow = line.split(",");
+                idBook = vetBorrow[0];
+                idStudent = Integer.parseInt(vetBorrow[1]);
+                dataBorrowing = vetBorrow[2];
+                dataReturned = vetBorrow[3];
+               
+                Borrow BorrowObj = new Borrow(idBook,idStudent,dataBorrowing,dataReturned);
+                listBorrowed.add(BorrowObj);
+                line = br.readLine(); //read the next line of file csv.
+            }
+        }catch(Exception e){
+            System.out.println("Error open file\nMessage error: " + e.getMessage());
+        }
+    }
     public void messageError(String objError) {
         System.out.println(objError + " was not found!");
     }
+    
+    
 
     public void queueStudentByBook() {
 
@@ -256,10 +344,10 @@ public class ControllerBorrow {
     public void listBookAreBorred() {
 
         System.out.println("List of books are borrowed");
-        for (int i = 0; i < ControllerBook.listAvailableBook.size(); i++) {
+        for (int i = 0; i < ControllerAvailabilityBook.listAvailableBook.size(); i++) {
 
-            if (ControllerBook.listAvailableBook.get(i).getIdBook() == ControllerBook.listBook.get(i).getIdBook()
-                    && ControllerBook.listAvailableBook.get(i).isIsAvailable() == false) {
+            if (ControllerAvailabilityBook.listAvailableBook.get(i).getIdBook() == ControllerBook.listBook.get(i).getIdBook()
+                    && ControllerAvailabilityBook.listAvailableBook.get(i).isIsAvailable() == false) {
 
                 System.out.println(ControllerBook.listBook.get(i));
             }

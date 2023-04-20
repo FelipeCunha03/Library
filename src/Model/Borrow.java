@@ -33,6 +33,16 @@ public class Borrow {
         this.dataReturned = dataReturned;
     }
 
+    public Borrow(String idBook, int idStudent, String dataBorrowing, String dataReturned) {
+          
+        this.idBook = idBook;
+        this.idStudent = idStudent;
+        this.dataBorrowing = dataBorrowing;
+        this.dataReturned = dataReturned;
+    }
+    
+    
+
     public Borrow(int idStudent, Book myBook) {
         this.idStudent = idStudent;
         this.myBook = myBook;

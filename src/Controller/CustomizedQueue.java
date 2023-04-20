@@ -15,6 +15,16 @@ public class CustomizedQueue<T> implements InterfaceQueue {
     private int first;//  index of the element
     private int last;
     private int capacity;
+
+    public int[] getIdStudent() {
+        return idStudent;
+    }
+
+    public void setIdStudent(int[] idStudent) {
+        this.idStudent = idStudent;
+    }
+    
+    
     
     
     

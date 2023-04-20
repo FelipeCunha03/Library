@@ -154,21 +154,7 @@ public class ControllerBook {
         System.out.println(listBook);
     }
 
-    static List<AvailabilityBook> listAvailableBook = new ArrayList();
-
-    public List<AvailabilityBook> generateAvailableBook() {
-
-        String idbook;
-
-        for (int i = 0; i < listBook.size(); i++) {
-
-            idbook = listBook.get(i).getIdBook();
-
-            AvailabilityBook myAvailable = new AvailabilityBook(idbook);
-            listAvailableBook.add(myAvailable);
-        }
-        return listAvailableBook;
-    }
+      
 }
 
   
